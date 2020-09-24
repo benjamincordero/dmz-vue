@@ -1,0 +1,70 @@
+version: "3.1"
+services:
+  #PHP Service
+  app-template:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: php:7.4-fpm-alpine
+    container_name: app-template
+    restart: unless-stopped
+    tty: true
+    environment:
+      SERVICE_NAME: app-template
+      SERVICE_TAGS: dev
+    working_dir: /var/www
+    volumes:
+      - ./:/var/www
+      - ./.docker/php/local.ini:/usr/local/etc/php/conf.d/local.ini
+    networks:
+      - app-network
+
+  #Nginx Service
+  webserver-template:
+    image: nginx:alpine
+    container_name: webserver-template
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "8000:80"
+    volumes:
+      - ./:/var/www
+      - ./.docker/nginx/conf.d/:/etc/nginx/conf.d
+    networks:
+      - app-network
+
+  #MySQL Service
+  database-template:
+    image: mysql:5.7
+    command: --default-authentication-plugin=mysql_native_password
+    container_name: database-template
+    restart: always
+    tty: true
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: template
+      MYSQL_ROOT_PASSWORD: password
+    volumes:
+      - ./.docker/dbdata:/var/lib/mysql
+      - ./.docker/mysql/my.cnf:/etc/mysql/my.cnf
+    networks:
+      - app-network
+  adminer-template:
+    container_name: adminer-template
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+    networks:
+      - app-network
+
+
+#Docker Networks
+networks:
+  app-network:
+    driver: bridge
+#volumes
+volumes:
+  dbdata:
+    driver: local
