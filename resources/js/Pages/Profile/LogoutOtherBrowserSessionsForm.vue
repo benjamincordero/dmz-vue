@@ -127,7 +127,7 @@
                 this.confirmingLogout = true
 
                 setTimeout(() => {
-                    //this.$refs.password.focus()
+                    this.$refs.password.focus()
                 }, 250)
             },
 

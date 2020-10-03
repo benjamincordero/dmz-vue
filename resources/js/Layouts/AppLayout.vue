@@ -74,9 +74,9 @@
           <span class="mx-3">Dashboard</span>
         </nav-link>
 
-        <a
-          class="flex items-center mt-4 py-2 px-6 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100"
-          href="/ui-elements"
+        <nav-link
+          href="#"
+          :active="$page.currentRouteName == 'element'"
         >
           <svg
             class="h-6 w-6"
@@ -93,12 +93,15 @@
             ></path>
           </svg>
 
-          <span class="mx-3">UI Elements</span>
-        </a>
 
-        <a
-          class="flex items-center mt-4 py-2 px-6 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100"
-          href="/tables"
+
+          <span class="mx-3">Element</span>
+        </nav-link>
+
+
+        <nav-link
+          href="#"
+          :active="$page.currentRouteName == 'element2'"
         >
           <svg
             class="h-6 w-6"
@@ -115,14 +118,15 @@
             ></path>
           </svg>
 
-          <span class="mx-3">Tables</span>
-        </a>
 
-        <a
-          class="flex items-center mt-4 py-2 px-6 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100"
-          href="/forms"
+          <span class="mx-3">Element 2</span>
+        </nav-link>
+
+        <nav-link
+          href="#"
+          :active="$page.currentRouteName == 'element3'"
         >
-          <svg
+     <svg
             class="h-6 w-6"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -137,8 +141,13 @@
             ></path>
           </svg>
 
-          <span class="mx-3">Forms</span>
-        </a>
+
+
+          <span class="mx-3">Element 3</span>
+        </nav-link>
+
+
+
       </nav>
     </div>
     <div class="flex-1 flex flex-col overflow-hidden">
@@ -336,6 +345,11 @@
         <div class="container mx-auto px-6 py-8">
           <main>
             <slot></slot>
+
+            <!-- Modal Portal -->
+            <portal-target name="modal" multiple>
+            </portal-target>
+
           </main>
         </div>
       </main>

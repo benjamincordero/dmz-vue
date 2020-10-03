@@ -2759,6 +2759,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -3447,19 +3461,22 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     confirmLogout: function confirmLogout() {
+      var _this = this;
+
       this.form.password = '';
       this.confirmingLogout = true;
-      setTimeout(function () {//this.$refs.password.focus()
+      setTimeout(function () {
+        _this.$refs.password.focus();
       }, 250);
     },
     logoutOtherBrowserSessions: function logoutOtherBrowserSessions() {
-      var _this = this;
+      var _this2 = this;
 
       this.form.post('/user/other-browser-sessions', {
         preserveScroll: true
       }).then(function (response) {
-        if (!_this.form.hasErrors()) {
-          _this.confirmingLogout = false;
+        if (!_this2.form.hasErrors()) {
+          _this2.confirmingLogout = false;
         }
       });
     }
@@ -24883,11 +24900,12 @@ var render = function() {
               ),
               _vm._v(" "),
               _c(
-                "a",
+                "nav-link",
                 {
-                  staticClass:
-                    "flex items-center mt-4 py-2 px-6 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100",
-                  attrs: { href: "/ui-elements" }
+                  attrs: {
+                    href: "#",
+                    active: _vm.$page.currentRouteName == "element"
+                  }
                 },
                 [
                   _c(
@@ -24914,16 +24932,17 @@ var render = function() {
                     ]
                   ),
                   _vm._v(" "),
-                  _c("span", { staticClass: "mx-3" }, [_vm._v("UI Elements")])
+                  _c("span", { staticClass: "mx-3" }, [_vm._v("Element")])
                 ]
               ),
               _vm._v(" "),
               _c(
-                "a",
+                "nav-link",
                 {
-                  staticClass:
-                    "flex items-center mt-4 py-2 px-6 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100",
-                  attrs: { href: "/tables" }
+                  attrs: {
+                    href: "#",
+                    active: _vm.$page.currentRouteName == "element2"
+                  }
                 },
                 [
                   _c(
@@ -24950,16 +24969,17 @@ var render = function() {
                     ]
                   ),
                   _vm._v(" "),
-                  _c("span", { staticClass: "mx-3" }, [_vm._v("Tables")])
+                  _c("span", { staticClass: "mx-3" }, [_vm._v("Element 2")])
                 ]
               ),
               _vm._v(" "),
               _c(
-                "a",
+                "nav-link",
                 {
-                  staticClass:
-                    "flex items-center mt-4 py-2 px-6 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100",
-                  attrs: { href: "/forms" }
+                  attrs: {
+                    href: "#",
+                    active: _vm.$page.currentRouteName == "element3"
+                  }
                 },
                 [
                   _c(
@@ -24986,7 +25006,7 @@ var render = function() {
                     ]
                   ),
                   _vm._v(" "),
-                  _c("span", { staticClass: "mx-3" }, [_vm._v("Forms")])
+                  _c("span", { staticClass: "mx-3" }, [_vm._v("Element 3")])
                 ]
               )
             ],
@@ -25243,7 +25263,17 @@ var render = function() {
           },
           [
             _c("div", { staticClass: "container mx-auto px-6 py-8" }, [
-              _c("main", [_vm._t("default")], 2)
+              _c(
+                "main",
+                [
+                  _vm._t("default"),
+                  _vm._v(" "),
+                  _c("portal-target", {
+                    attrs: { name: "modal", multiple: "" }
+                  })
+                ],
+                2
+              )
             ])
           ]
         )
@@ -26760,7 +26790,7 @@ var render = function() {
           { staticClass: "max-w-7xl mx-auto py-10 sm:px-6 lg:px-8" },
           [
             _c("logout-other-browser-sessions-form", {
-              staticClass: "mt-10 sm:mt-0",
+              staticClass: "mb-10 sm:mt-0",
               attrs: { sessions: _vm.sessions }
             }),
             _vm._v(" "),
@@ -26770,7 +26800,7 @@ var render = function() {
             _vm._v(" "),
             _c("section-border"),
             _vm._v(" "),
-            _c("update-password-form", { staticClass: "mt-5 sm:mt-0" }),
+            _c("update-password-form", { staticClass: "mt-10 sm:mt-0" }),
             _vm._v(" "),
             _vm.$page.jetstream.canManageTwoFactorAuthentication
               ? _c(
@@ -28630,7 +28660,7 @@ var render = function() {
           )
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "mt-6 text-red-600" }, [
+        _c("div", { staticClass: "mt-6 text-gray-800" }, [
           _vm._v(
             "\n            Laravel Jetstream provides a beautiful, robust starting point for your next Laravel application. Laravel is designed\n            to help you build your application using a development environment that is simple, powerful, and enjoyable. We believe\n            you should love expressing your creativity through programming, so we have spent time carefully crafting the Laravel\n            ecosystem to be a breath of fresh air. We hope you love it.\n        "
           )
