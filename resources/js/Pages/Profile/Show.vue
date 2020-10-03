@@ -8,25 +8,26 @@
 
         <div>
             <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
+                <logout-other-browser-sessions-form :sessions="sessions" class="mt-10 sm:mt-0" />
+
                 <update-profile-information-form
                             :name="$page.user.name"
                             :email="$page.user.email" />
 
-                <jet-section-border />
+                <section-border />
 
-                <update-password-form class="mt-10 sm:mt-0" />
+                <update-password-form class="mt-5 sm:mt-0" />
 
                 <div v-if="$page.jetstream.canManageTwoFactorAuthentication">
-                    <jet-section-border />
+                    <section-border />
 
                     <two-factor-authentication-form class="mt-10 sm:mt-0" />
                 </div>
 
-                <jet-section-border />
+                <section-border />
 
-                <logout-other-browser-sessions-form :sessions="sessions" class="mt-10 sm:mt-0" />
 
-                <jet-section-border />
+                <section-border />
 
                 <delete-user-form class="mt-10 sm:mt-0" />
             </div>
@@ -37,7 +38,7 @@
 <script>
     import AppLayout from './../../Layouts/AppLayout'
     import DeleteUserForm from './DeleteUserForm'
-    import JetSectionBorder from './../../Jetstream/SectionBorder'
+    import SectionBorder from './../../components/SectionBorder'
     import LogoutOtherBrowserSessionsForm from './LogoutOtherBrowserSessionsForm'
     import TwoFactorAuthenticationForm from './TwoFactorAuthenticationForm'
     import UpdatePasswordForm from './UpdatePasswordForm'
@@ -49,7 +50,7 @@
         components: {
             AppLayout,
             DeleteUserForm,
-            JetSectionBorder,
+            SectionBorder,
             LogoutOtherBrowserSessionsForm,
             TwoFactorAuthenticationForm,
             UpdatePasswordForm,

@@ -10,7 +10,7 @@
 
         <template #form>
             <!-- Profile Photo -->
-            <div class="col-span-6 sm:col-span-4" v-if="$page.jetstream.managesProfilePhotos">
+            <div class="col-span-12 text-center" v-if="$page.jetstream.managesProfilePhotos">
                 <!-- Profile Photo File Input -->
                 <input type="file" class="hidden"
                             ref="photo"
@@ -19,8 +19,8 @@
                 <jet-label for="photo" value="Photo" />
 
                 <!-- Current Profile Photo -->
-                <div class="mt-2" v-show="! photoPreview">
-                    <img :src="$page.user.profile_photo_url" alt="Current Profile Photo" class="rounded-full h-20 w-20 object-cover">
+                <div class="mx-2" v-show="! photoPreview">
+                    <img :src="$page.user.profile_photo_url" alt="Current Profile Photo" class="rounded-full h-20 w-20 object-cover mx-auto">
                 </div>
 
                 <!-- New Profile Photo Preview -->
@@ -69,13 +69,13 @@
 </template>
 
 <script>
-    import JetButton from './../../Jetstream/Button'
-    import JetFormSection from './../../Jetstream/FormSection'
-    import JetInput from './../../Jetstream/Input'
-    import JetInputError from './../../Jetstream/InputError'
-    import JetLabel from './../../Jetstream/Label'
-    import JetActionMessage from './../../Jetstream/ActionMessage'
-    import JetSecondaryButton from './../../Jetstream/SecondaryButton'
+    import JetButton from './../../components/Button'
+    import JetFormSection from './../../components/FormSection'
+    import JetInput from './../../components/Input'
+    import JetInputError from './../../components/InputError'
+    import JetLabel from './../../components/Label'
+    import JetActionMessage from './../../components/ActionMessage'
+    import JetSecondaryButton from './../../components/SecondaryButton'
 
     export default {
         components: {

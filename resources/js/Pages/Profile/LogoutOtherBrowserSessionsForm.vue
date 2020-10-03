@@ -1,5 +1,5 @@
 <template>
-    <jet-action-section>
+    <action-section>
         <template #title>
             Browser Sessions
         </template>
@@ -15,7 +15,7 @@
 
             <!-- Other Browser Sessions -->
             <div class="mt-5 space-y-6" v-if="sessions.length > 0">
-                <div class="flex items-center" v-for="session in sessions">
+                <div class="flex items-center" v-for="session in sessions" :key="session.id">
                     <div>
                         <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor" class="w-8 h-8 text-gray-500" v-if="session.agent.is_desktop">
                             <path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
@@ -44,68 +44,68 @@
             </div>
 
             <div class="flex items-center mt-5">
-                <jet-button @click.native="confirmLogout">
-                    Logout Other Browser Sessions
-                </jet-button>
+                <Button @click.native="confirmLogout" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray transition ease-in-out duration-150">
+                    Logout Other Browser Sessions1
+                </Button>
 
-                <jet-action-message :on="form.recentlySuccessful" class="ml-3">
+                <action-message :on="form.recentlySuccessful" class="ml-3">
                     Done.
-                </jet-action-message>
+                </action-message>
             </div>
 
             <!-- Logout Other Devices Confirmation Modal -->
-            <jet-dialog-modal :show="confirmingLogout" @close="confirmingLogout = false">
+            <dialog-modal :show="confirmingLogout" @close="confirmingLogout = false">
                 <template #title>
-                    Logout Other Browser Sessions
+                    Logout Other Browser Sessions2
                 </template>
 
                 <template #content>
                     Please enter your password to confirm you would like to logout of your other browser sessions across all of your devices.
 
                     <div class="mt-4">
-                        <jet-input type="password" class="mt-1 block w-3/4" placeholder="Password"
+                        <Input type="password" class="mt-1 block w-3/4" placeholder="Password"
                                     ref="password"
                                     v-model="form.password"
                                     @keyup.enter.native="logoutOtherBrowserSessions" />
 
-                        <jet-input-error :message="form.error('password')" class="mt-2" />
+                        <input-error :message="form.error('password')" class="mt-2" />
                     </div>
                 </template>
 
                 <template #footer>
-                    <jet-secondary-button @click.native="confirmingLogout = false">
+                    <secondary-button @click.native="confirmingLogout = false">
                         Nevermind
-                    </jet-secondary-button>
+                    </secondary-button>
 
-                    <jet-button class="ml-2" @click.native="logoutOtherBrowserSessions" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                        Logout Other Browser Sessions
-                    </jet-button>
+                    <Button class="ml-2" @click.native="logoutOtherBrowserSessions" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                        Logout Other Browser Sessions3
+                    </Button>
                 </template>
-            </jet-dialog-modal>
+            </dialog-modal>
         </template>
-    </jet-action-section>
+    </action-section>
 </template>
 
 <script>
-    import JetActionMessage from './../../Jetstream/ActionMessage'
-    import JetActionSection from './../../Jetstream/ActionSection'
-    import JetButton from './../../Jetstream/Button'
-    import JetDialogModal from './../../Jetstream/DialogModal'
-    import JetInput from './../../Jetstream/Input'
-    import JetInputError from './../../Jetstream/InputError'
-    import JetSecondaryButton from './../../Jetstream/SecondaryButton'
+    import ActionMessage from './../../components/ActionMessage'
+    import ActionSection from './../../components/ActionSection'
+    import Button from './../../components/Button'
+    import DialogModal from './../../components/DialogModal'
+    import Input from './../../components/Input'
+    import InputError from './../../components/InputError'
+    import SecondaryButton from './../../components/SecondaryButton'
 
     export default {
         props: ['sessions'],
 
         components: {
-            JetActionMessage,
-            JetActionSection,
-            JetButton,
-            JetDialogModal,
-            JetInput,
-            JetInputError,
-            JetSecondaryButton,
+            ActionMessage,
+            ActionSection,
+            Button,
+            DialogModal,
+            Input,
+            InputError,
+            SecondaryButton,
         },
 
         data() {
@@ -124,11 +124,10 @@
         methods: {
             confirmLogout() {
                 this.form.password = ''
-
                 this.confirmingLogout = true
 
                 setTimeout(() => {
-                    this.$refs.password.focus()
+                    //this.$refs.password.focus()
                 }, 250)
             },
 
