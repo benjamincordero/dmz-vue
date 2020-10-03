@@ -6,13 +6,13 @@ use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     *
-     * @return void
-     */
+
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        //\App\Models\Category::factory(3)->create();
+        //\App\Models\Tag::factory(3)->create();
+        \App\Models\Post::factory()->count(5)->forUser(['name' => 'Benjamin Cordero', 'email' => 'admin@admin.com', 'role' => 'root'])->forCategory(['name' => 'Tecnologia'])->hasTags(3)->create();
+        \App\Models\User::factory(4)->create();
+        \App\Models\Image::factory(3)->create();
     }
 }
