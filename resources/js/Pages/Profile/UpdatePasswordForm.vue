@@ -1,5 +1,5 @@
 <template>
-    <jet-form-section @submitted="updatePassword">
+    <form-section @submitted="updatePassword">
         <template #title>
             Update Password
         </template>
@@ -10,52 +10,52 @@
 
         <template #form>
             <div class="col-span-6 sm:col-span-4">
-                <jet-label for="current_password" value="Current Password" />
-                <jet-input id="current_password" type="password" class="mt-1 block w-full" v-model="form.current_password" ref="current_password" autocomplete="current-password" />
-                <jet-input-error :message="form.error('current_password')" class="mt-2" />
+                <Label for="current_password" value="Current Password" />
+                <Input id="current_password" type="password" class="mt-1 block w-full" v-model="form.current_password" ref="current_password" autocomplete="current-password" />
+                <input-error :message="form.error('current_password')" class="mt-2" />
             </div>
 
             <div class="col-span-6 sm:col-span-4">
-                <jet-label for="password" value="New Password" />
-                <jet-input id="password" type="password" class="mt-1 block w-full" v-model="form.password" autocomplete="new-password" />
-                <jet-input-error :message="form.error('password')" class="mt-2" />
+                <Label for="password" value="New Password" />
+                <Input id="password" type="password" class="mt-1 block w-full" v-model="form.password" autocomplete="new-password" />
+                <input-error :message="form.error('password')" class="mt-2" />
             </div>
 
             <div class="col-span-6 sm:col-span-4">
-                <jet-label for="password_confirmation" value="Confirm Password" />
-                <jet-input id="password_confirmation" type="password" class="mt-1 block w-full" v-model="form.password_confirmation" autocomplete="new-password" />
-                <jet-input-error :message="form.error('password_confirmation')" class="mt-2" />
+                <Label for="password_confirmation" value="Confirm Password" />
+                <Input id="password_confirmation" type="password" class="mt-1 block w-full" v-model="form.password_confirmation" autocomplete="new-password" />
+                <input-error :message="form.error('password_confirmation')" class="mt-2" />
             </div>
         </template>
 
         <template #actions>
-            <jet-action-message :on="form.recentlySuccessful" class="mr-3">
+            <action-message :on="form.recentlySuccessful" class="mr-3">
                 Saved.
-            </jet-action-message>
+            </action-message>
 
-            <jet-button :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+            <Button :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                 Save
-            </jet-button>
+            </Button>
         </template>
-    </jet-form-section>
+    </form-section>
 </template>
 
 <script>
-    import JetActionMessage from './../../components/ActionMessage'
-    import JetButton from './../../components/Button'
-    import JetFormSection from './../../components/FormSection'
-    import JetInput from './../../components/Input'
-    import JetInputError from './../../components/InputError'
-    import JetLabel from './../../components/Label'
+    import ActionMessage from './../../components/ActionMessage'
+    import Button from './../../components/Button'
+    import FormSection from './../../components/FormSection'
+    import Input from './../../components/Input'
+    import InputError from './../../components/InputError'
+    import Label from './../../components/Label'
 
     export default {
         components: {
-            JetActionMessage,
-            JetButton,
-            JetFormSection,
-            JetInput,
-            JetInputError,
-            JetLabel,
+            ActionMessage,
+            Button,
+            FormSection,
+            Input,
+            InputError,
+            Label,
         },
 
         data() {

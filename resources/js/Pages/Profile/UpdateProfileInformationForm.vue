@@ -30,13 +30,13 @@
                     </span>
                 </div>
 
-                <jet-secondary-button class="mt-2 mr-2" type="button" @click.native.prevent="selectNewPhoto">
+                <secondary-button class="mt-2 mr-2" type="button" @click.native.prevent="selectNewPhoto">
                     Select A New Photo
-                </jet-secondary-button>
+                </secondary-button>
 
-                <jet-secondary-button type="button" class="mt-2" @click.native.prevent="deletePhoto" v-if="$page.user.profile_photo_path">
+                <secondary-button type="button" class="mt-2" @click.native.prevent="deletePhoto" v-if="$page.user.profile_photo_path">
                     Remove Photo
-                </jet-secondary-button>
+                </secondary-button>
 
                 <input-error :message="form.error('photo')" class="mt-2" />
             </div>
@@ -44,14 +44,14 @@
             <!-- Name -->
             <div class="col-span-12 md:col-span-6 sm:col-span-4">
                 <label for="name" value="Name" />
-                <jet-input id="name" type="text" class="mt-1 block w-full" v-model="form.name" autocomplete="name" />
+                <Input id="name" type="text" class="mt-1 block w-full" v-model="form.name" autocomplete="name" />
                 <input-error :message="form.error('name')" class="mt-2" />
             </div>
 
             <!-- Email -->
             <div class="col-span-12 md:col-span-6 sm:col-span-4">
                 <label for="email" value="Email" />
-                <jet-input id="email" type="email" class="mt-1 block w-full" v-model="form.email" />
+                <Input id="email" type="email" class="mt-1 block w-full" v-model="form.email" />
                 <input-error :message="form.error('email')" class="mt-2" />
             </div>
         </template>
@@ -61,31 +61,31 @@
                 Saved.
             </action-message>
 
-            <jet-button :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+            <Button :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                 Save
-            </jet-button>
+            </Button>
         </template>
     </form-section>
 </template>
 
 <script>
-    import JetButton from './../../components/Button'
+    import Button from './../../components/Button'
     import FormSection from './../../components/FormSection'
-    import JetInput from './../../components/Input'
+    import Input from './../../components/Input'
     import InputError from './../../components/InputError'
     import Label from './../../components/Label'
     import ActionMessage from './../../components/ActionMessage'
-    import JetSecondaryButton from './../../components/SecondaryButton'
+    import SecondaryButton from './../../components/SecondaryButton'
 
     export default {
         components: {
             ActionMessage,
-            JetButton,
+            Button,
             FormSection,
-            JetInput,
+            Input,
             InputError,
             Label,
-            JetSecondaryButton,
+            SecondaryButton,
         },
 
         props: ['name', 'email'],

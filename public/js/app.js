@@ -13865,13 +13865,13 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    JetActionSection: _components_ActionSection__WEBPACK_IMPORTED_MODULE_0__["default"],
-    JetButton: _components_Button__WEBPACK_IMPORTED_MODULE_1__["default"],
-    JetDangerButton: _components_DangerButton__WEBPACK_IMPORTED_MODULE_3__["default"],
-    JetDialogModal: _components_DialogModal__WEBPACK_IMPORTED_MODULE_2__["default"],
-    JetInput: _components_Input__WEBPACK_IMPORTED_MODULE_4__["default"],
-    JetInputError: _components_InputError__WEBPACK_IMPORTED_MODULE_5__["default"],
-    JetSecondaryButton: _components_SecondaryButton__WEBPACK_IMPORTED_MODULE_6__["default"]
+    ActionSection: _components_ActionSection__WEBPACK_IMPORTED_MODULE_0__["default"],
+    Button: _components_Button__WEBPACK_IMPORTED_MODULE_1__["default"],
+    DangerButton: _components_DangerButton__WEBPACK_IMPORTED_MODULE_3__["default"],
+    DialogModal: _components_DialogModal__WEBPACK_IMPORTED_MODULE_2__["default"],
+    Input: _components_Input__WEBPACK_IMPORTED_MODULE_4__["default"],
+    InputError: _components_InputError__WEBPACK_IMPORTED_MODULE_5__["default"],
+    SecondaryButton: _components_SecondaryButton__WEBPACK_IMPORTED_MODULE_6__["default"]
   },
   data: function data() {
     return {
@@ -14249,11 +14249,11 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    JetActionSection: _components_ActionSection__WEBPACK_IMPORTED_MODULE_0__["default"],
-    JetButton: _components_Button__WEBPACK_IMPORTED_MODULE_1__["default"],
-    JetConfirmsPassword: _components_ConfirmsPassword__WEBPACK_IMPORTED_MODULE_2__["default"],
-    JetDangerButton: _components_DangerButton__WEBPACK_IMPORTED_MODULE_3__["default"],
-    JetSecondaryButton: _components_SecondaryButton__WEBPACK_IMPORTED_MODULE_4__["default"]
+    ActionSection: _components_ActionSection__WEBPACK_IMPORTED_MODULE_0__["default"],
+    Button: _components_Button__WEBPACK_IMPORTED_MODULE_1__["default"],
+    ConfirmsPassword: _components_ConfirmsPassword__WEBPACK_IMPORTED_MODULE_2__["default"],
+    DangerButton: _components_DangerButton__WEBPACK_IMPORTED_MODULE_3__["default"],
+    SecondaryButton: _components_SecondaryButton__WEBPACK_IMPORTED_MODULE_4__["default"]
   },
   data: function data() {
     return {
@@ -14382,12 +14382,12 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    JetActionMessage: _components_ActionMessage__WEBPACK_IMPORTED_MODULE_0__["default"],
-    JetButton: _components_Button__WEBPACK_IMPORTED_MODULE_1__["default"],
-    JetFormSection: _components_FormSection__WEBPACK_IMPORTED_MODULE_2__["default"],
-    JetInput: _components_Input__WEBPACK_IMPORTED_MODULE_3__["default"],
-    JetInputError: _components_InputError__WEBPACK_IMPORTED_MODULE_4__["default"],
-    JetLabel: _components_Label__WEBPACK_IMPORTED_MODULE_5__["default"]
+    ActionMessage: _components_ActionMessage__WEBPACK_IMPORTED_MODULE_0__["default"],
+    Button: _components_Button__WEBPACK_IMPORTED_MODULE_1__["default"],
+    FormSection: _components_FormSection__WEBPACK_IMPORTED_MODULE_2__["default"],
+    Input: _components_Input__WEBPACK_IMPORTED_MODULE_3__["default"],
+    InputError: _components_InputError__WEBPACK_IMPORTED_MODULE_4__["default"],
+    Label: _components_Label__WEBPACK_IMPORTED_MODULE_5__["default"]
   },
   data: function data() {
     return {
@@ -14511,12 +14511,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     ActionMessage: _components_ActionMessage__WEBPACK_IMPORTED_MODULE_5__["default"],
-    JetButton: _components_Button__WEBPACK_IMPORTED_MODULE_0__["default"],
+    Button: _components_Button__WEBPACK_IMPORTED_MODULE_0__["default"],
     FormSection: _components_FormSection__WEBPACK_IMPORTED_MODULE_1__["default"],
-    JetInput: _components_Input__WEBPACK_IMPORTED_MODULE_2__["default"],
+    Input: _components_Input__WEBPACK_IMPORTED_MODULE_2__["default"],
     InputError: _components_InputError__WEBPACK_IMPORTED_MODULE_3__["default"],
     Label: _components_Label__WEBPACK_IMPORTED_MODULE_4__["default"],
-    JetSecondaryButton: _components_SecondaryButton__WEBPACK_IMPORTED_MODULE_6__["default"]
+    SecondaryButton: _components_SecondaryButton__WEBPACK_IMPORTED_MODULE_6__["default"]
   },
   props: ['name', 'email'],
   data: function data() {
@@ -14725,11 +14725,11 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   components: {
-    JetButton: _Button__WEBPACK_IMPORTED_MODULE_0__["default"],
-    JetDialogModal: _DialogModal__WEBPACK_IMPORTED_MODULE_1__["default"],
-    JetInput: _Input__WEBPACK_IMPORTED_MODULE_2__["default"],
-    JetInputError: _InputError__WEBPACK_IMPORTED_MODULE_3__["default"],
-    JetSecondaryButton: _SecondaryButton__WEBPACK_IMPORTED_MODULE_4__["default"]
+    Button: _Button__WEBPACK_IMPORTED_MODULE_0__["default"],
+    DialogModal: _DialogModal__WEBPACK_IMPORTED_MODULE_1__["default"],
+    Input: _Input__WEBPACK_IMPORTED_MODULE_2__["default"],
+    InputError: _InputError__WEBPACK_IMPORTED_MODULE_3__["default"],
+    SecondaryButton: _SecondaryButton__WEBPACK_IMPORTED_MODULE_4__["default"]
   },
   data: function data() {
     return {
@@ -15023,7 +15023,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    JetSectionTitle: _SectionTitle__WEBPACK_IMPORTED_MODULE_0__["default"]
+    SectionTitle: _SectionTitle__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   computed: {
     hasActions: function hasActions() {
@@ -39165,7 +39165,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("jet-action-section", {
+  return _c("action-section", {
     scopedSlots: _vm._u([
       {
         key: "title",
@@ -39196,7 +39196,7 @@ var render = function() {
               { staticClass: "mt-5" },
               [
                 _c(
-                  "jet-danger-button",
+                  "danger-button",
                   {
                     nativeOn: {
                       click: function($event) {
@@ -39210,7 +39210,7 @@ var render = function() {
               1
             ),
             _vm._v(" "),
-            _c("jet-dialog-modal", {
+            _c("dialog-modal", {
               attrs: { show: _vm.confirmingUserDeletion },
               on: {
                 close: function($event) {
@@ -39238,7 +39238,7 @@ var render = function() {
                         "div",
                         { staticClass: "mt-4" },
                         [
-                          _c("jet-input", {
+                          _c("Input", {
                             ref: "password",
                             staticClass: "mt-1 block w-3/4",
                             attrs: {
@@ -39271,7 +39271,7 @@ var render = function() {
                             }
                           }),
                           _vm._v(" "),
-                          _c("jet-input-error", {
+                          _c("input-error", {
                             staticClass: "mt-2",
                             attrs: { message: _vm.form.error("password") }
                           })
@@ -39287,7 +39287,7 @@ var render = function() {
                   fn: function() {
                     return [
                       _c(
-                        "jet-secondary-button",
+                        "secondary-button",
                         {
                           nativeOn: {
                             click: function($event) {
@@ -39303,7 +39303,7 @@ var render = function() {
                       ),
                       _vm._v(" "),
                       _c(
-                        "jet-danger-button",
+                        "danger-button",
                         {
                           staticClass: "ml-2",
                           class: { "opacity-25": _vm.form.processing },
@@ -39749,7 +39749,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("jet-action-section", {
+  return _c("action-section", {
     scopedSlots: _vm._u([
       {
         key: "title",
@@ -39862,13 +39862,13 @@ var render = function() {
                     "div",
                     [
                       _c(
-                        "jet-confirms-password",
+                        "confirms-password",
                         {
                           on: { confirmed: _vm.enableTwoFactorAuthentication }
                         },
                         [
                           _c(
-                            "jet-button",
+                            "Button",
                             {
                               class: { "opacity-25": _vm.enabling },
                               attrs: { type: "button", disabled: _vm.enabling }
@@ -39889,51 +39889,43 @@ var render = function() {
                     "div",
                     [
                       _c(
-                        "jet-confirms-password",
+                        "confirms-password",
                         { on: { confirmed: _vm.regenerateRecoveryCodes } },
                         [
                           _vm.recoveryCodes.length > 0
-                            ? _c(
-                                "jet-secondary-button",
-                                { staticClass: "mr-3" },
-                                [
-                                  _vm._v(
-                                    "\n                        Regenerate Recovery Codes\n                    "
-                                  )
-                                ]
-                              )
+                            ? _c("secondary-button", { staticClass: "mr-3" }, [
+                                _vm._v(
+                                  "\n                        Regenerate Recovery Codes\n                    "
+                                )
+                              ])
                             : _vm._e()
                         ],
                         1
                       ),
                       _vm._v(" "),
                       _c(
-                        "jet-confirms-password",
+                        "confirms-password",
                         { on: { confirmed: _vm.showRecoveryCodes } },
                         [
                           _vm.recoveryCodes.length == 0
-                            ? _c(
-                                "jet-secondary-button",
-                                { staticClass: "mr-3" },
-                                [
-                                  _vm._v(
-                                    "\n                        Show Recovery Codes\n                    "
-                                  )
-                                ]
-                              )
+                            ? _c("secondary-button", { staticClass: "mr-3" }, [
+                                _vm._v(
+                                  "\n                        Show Recovery Codes\n                    "
+                                )
+                              ])
                             : _vm._e()
                         ],
                         1
                       ),
                       _vm._v(" "),
                       _c(
-                        "jet-confirms-password",
+                        "confirms-password",
                         {
                           on: { confirmed: _vm.disableTwoFactorAuthentication }
                         },
                         [
                           _c(
-                            "jet-danger-button",
+                            "danger-button",
                             {
                               class: { "opacity-25": _vm.disabling },
                               attrs: { disabled: _vm.disabling }
@@ -39980,7 +39972,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("jet-form-section", {
+  return _c("form-section", {
     on: { submitted: _vm.updatePassword },
     scopedSlots: _vm._u([
       {
@@ -40009,11 +40001,11 @@ var render = function() {
               "div",
               { staticClass: "col-span-6 sm:col-span-4" },
               [
-                _c("jet-label", {
+                _c("Label", {
                   attrs: { for: "current_password", value: "Current Password" }
                 }),
                 _vm._v(" "),
-                _c("jet-input", {
+                _c("Input", {
                   ref: "current_password",
                   staticClass: "mt-1 block w-full",
                   attrs: {
@@ -40030,7 +40022,7 @@ var render = function() {
                   }
                 }),
                 _vm._v(" "),
-                _c("jet-input-error", {
+                _c("input-error", {
                   staticClass: "mt-2",
                   attrs: { message: _vm.form.error("current_password") }
                 })
@@ -40042,11 +40034,11 @@ var render = function() {
               "div",
               { staticClass: "col-span-6 sm:col-span-4" },
               [
-                _c("jet-label", {
+                _c("Label", {
                   attrs: { for: "password", value: "New Password" }
                 }),
                 _vm._v(" "),
-                _c("jet-input", {
+                _c("Input", {
                   staticClass: "mt-1 block w-full",
                   attrs: {
                     id: "password",
@@ -40062,7 +40054,7 @@ var render = function() {
                   }
                 }),
                 _vm._v(" "),
-                _c("jet-input-error", {
+                _c("input-error", {
                   staticClass: "mt-2",
                   attrs: { message: _vm.form.error("password") }
                 })
@@ -40074,14 +40066,14 @@ var render = function() {
               "div",
               { staticClass: "col-span-6 sm:col-span-4" },
               [
-                _c("jet-label", {
+                _c("Label", {
                   attrs: {
                     for: "password_confirmation",
                     value: "Confirm Password"
                   }
                 }),
                 _vm._v(" "),
-                _c("jet-input", {
+                _c("Input", {
                   staticClass: "mt-1 block w-full",
                   attrs: {
                     id: "password_confirmation",
@@ -40097,7 +40089,7 @@ var render = function() {
                   }
                 }),
                 _vm._v(" "),
-                _c("jet-input-error", {
+                _c("input-error", {
                   staticClass: "mt-2",
                   attrs: { message: _vm.form.error("password_confirmation") }
                 })
@@ -40113,7 +40105,7 @@ var render = function() {
         fn: function() {
           return [
             _c(
-              "jet-action-message",
+              "action-message",
               {
                 staticClass: "mr-3",
                 attrs: { on: _vm.form.recentlySuccessful }
@@ -40122,7 +40114,7 @@ var render = function() {
             ),
             _vm._v(" "),
             _c(
-              "jet-button",
+              "Button",
               {
                 class: { "opacity-25": _vm.form.processing },
                 attrs: { disabled: _vm.form.processing }
@@ -40247,7 +40239,7 @@ var render = function() {
                     ),
                     _vm._v(" "),
                     _c(
-                      "jet-secondary-button",
+                      "secondary-button",
                       {
                         staticClass: "mt-2 mr-2",
                         attrs: { type: "button" },
@@ -40267,7 +40259,7 @@ var render = function() {
                     _vm._v(" "),
                     _vm.$page.user.profile_photo_path
                       ? _c(
-                          "jet-secondary-button",
+                          "secondary-button",
                           {
                             staticClass: "mt-2",
                             attrs: { type: "button" },
@@ -40301,7 +40293,7 @@ var render = function() {
               [
                 _c("label", { attrs: { for: "name", value: "Name" } }),
                 _vm._v(" "),
-                _c("jet-input", {
+                _c("Input", {
                   staticClass: "mt-1 block w-full",
                   attrs: { id: "name", type: "text", autocomplete: "name" },
                   model: {
@@ -40327,7 +40319,7 @@ var render = function() {
               [
                 _c("label", { attrs: { for: "email", value: "Email" } }),
                 _vm._v(" "),
-                _c("jet-input", {
+                _c("Input", {
                   staticClass: "mt-1 block w-full",
                   attrs: { id: "email", type: "email" },
                   model: {
@@ -40364,7 +40356,7 @@ var render = function() {
             ),
             _vm._v(" "),
             _c(
-              "jet-button",
+              "Button",
               {
                 class: { "opacity-25": _vm.form.processing },
                 attrs: { disabled: _vm.form.processing }
@@ -40669,7 +40661,7 @@ var render = function() {
         2
       ),
       _vm._v(" "),
-      _c("jet-dialog-modal", {
+      _c("dialog-modal", {
         attrs: { show: _vm.confirmingPassword },
         on: {
           close: function($event) {
@@ -40697,7 +40689,7 @@ var render = function() {
                   "div",
                   { staticClass: "mt-4" },
                   [
-                    _c("jet-input", {
+                    _c("Input", {
                       ref: "password",
                       staticClass: "mt-1 block w-3/4",
                       attrs: { type: "password", placeholder: "Password" },
@@ -40727,7 +40719,7 @@ var render = function() {
                       }
                     }),
                     _vm._v(" "),
-                    _c("jet-input-error", {
+                    _c("input-error", {
                       staticClass: "mt-2",
                       attrs: { message: _vm.form.error }
                     })
@@ -40743,7 +40735,7 @@ var render = function() {
             fn: function() {
               return [
                 _c(
-                  "jet-secondary-button",
+                  "secondary-button",
                   {
                     nativeOn: {
                       click: function($event) {
@@ -40755,7 +40747,7 @@ var render = function() {
                 ),
                 _vm._v(" "),
                 _c(
-                  "jet-button",
+                  "Button",
                   {
                     staticClass: "ml-2",
                     class: { "opacity-25": _vm.form.processing },
@@ -41048,7 +41040,7 @@ var render = function() {
     "div",
     { staticClass: "md:grid md:grid-cols-1 md:gap-6" },
     [
-      _c("jet-section-title", {
+      _c("section-title", {
         scopedSlots: _vm._u(
           [
             {

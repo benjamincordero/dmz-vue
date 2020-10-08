@@ -1,5 +1,5 @@
 <template>
-    <jet-action-section>
+    <action-section>
         <template #title>
             Delete Account
         </template>
@@ -14,13 +14,13 @@
             </div>
 
             <div class="mt-5">
-                <jet-danger-button @click.native="confirmUserDeletion">
+                <danger-button @click.native="confirmUserDeletion">
                     Delete Account
-                </jet-danger-button>
+                </danger-button>
             </div>
 
             <!-- Delete Account Confirmation Modal -->
-            <jet-dialog-modal :show="confirmingUserDeletion" @close="confirmingUserDeletion = false">
+            <dialog-modal :show="confirmingUserDeletion" @close="confirmingUserDeletion = false">
                 <template #title>
                     Delete Account
                 </template>
@@ -29,47 +29,47 @@
                     Are you sure you want to delete your account? Once your account is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account.
 
                     <div class="mt-4">
-                        <jet-input type="password" class="mt-1 block w-3/4" placeholder="Password"
+                        <Input type="password" class="mt-1 block w-3/4" placeholder="Password"
                                     ref="password"
                                     v-model="form.password"
                                     @keyup.enter.native="deleteUser" />
 
-                        <jet-input-error :message="form.error('password')" class="mt-2" />
+                        <input-error :message="form.error('password')" class="mt-2" />
                     </div>
                 </template>
 
                 <template #footer>
-                    <jet-secondary-button @click.native="confirmingUserDeletion = false">
+                    <secondary-button @click.native="confirmingUserDeletion = false">
                         Nevermind
-                    </jet-secondary-button>
+                    </secondary-button>
 
-                    <jet-danger-button class="ml-2" @click.native="deleteUser" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                    <danger-button class="ml-2" @click.native="deleteUser" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                         Delete Account
-                    </jet-danger-button>
+                    </danger-button>
                 </template>
-            </jet-dialog-modal>
+            </dialog-modal>
         </template>
-    </jet-action-section>
+    </action-section>
 </template>
 
 <script>
-    import JetActionSection from './../../components/ActionSection'
-    import JetButton from './../../components/Button'
-    import JetDialogModal from './../../components/DialogModal'
-    import JetDangerButton from './../../components/DangerButton'
-    import JetInput from './../../components/Input'
-    import JetInputError from './../../components/InputError'
-    import JetSecondaryButton from './../../components/SecondaryButton'
+    import ActionSection from './../../components/ActionSection'
+    import Button from './../../components/Button'
+    import DialogModal from './../../components/DialogModal'
+    import DangerButton from './../../components/DangerButton'
+    import Input from './../../components/Input'
+    import InputError from './../../components/InputError'
+    import SecondaryButton from './../../components/SecondaryButton'
 
     export default {
         components: {
-            JetActionSection,
-            JetButton,
-            JetDangerButton,
-            JetDialogModal,
-            JetInput,
-            JetInputError,
-            JetSecondaryButton,
+            ActionSection,
+            Button,
+            DangerButton,
+            DialogModal,
+            Input,
+            InputError,
+            SecondaryButton,
         },
 
         data() {
