@@ -48,54 +48,18 @@
           href="/dashboard"
           :active="$page.currentRouteName == 'dashboard'"
         >
-          <svg
-            class="h-6 w-6"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"
-            ></path>
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"
-            ></path>
-          </svg>
-
-
-
+          <font-awesome-icon icon="tachometer-alt" />
           <span class="mx-3">Dashboard</span>
         </nav-link>
 
         <nav-link
-          href="#"
-          :active="$page.currentRouteName == 'element'"
+          href="/dashboard/categories"
+          :active="$page.currentRouteName == 'categories.index'"
         >
-          <svg
-            class="h-6 w-6"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M17 14v6m-3-3h6M6 10h2a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2zm10 0h2a2 2 0 002-2V6a2 2 0 00-2-2h-2a2 2 0 00-2 2v2a2 2 0 002 2zM6 20h2a2 2 0 002-2v-2a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2z"
-            ></path>
-          </svg>
 
+        <font-awesome-icon icon="bookmark" />
 
-
-          <span class="mx-3">Element</span>
+          <span class="mx-3">Categorias</span>
         </nav-link>
 
 
@@ -103,21 +67,8 @@
           href="#"
           :active="$page.currentRouteName == 'element2'"
         >
-          <svg
-            class="h-6 w-6"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
-            ></path>
-          </svg>
 
+          <font-awesome-icon icon="tags" />
 
           <span class="mx-3">Element 2</span>
         </nav-link>
@@ -126,24 +77,15 @@
           href="#"
           :active="$page.currentRouteName == 'element3'"
         >
-     <svg
-            class="h-6 w-6"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
-            ></path>
-          </svg>
-
-
+          <font-awesome-icon icon="newspaper" />
 
           <span class="mx-3">Element 3</span>
+        </nav-link>
+
+        <nav-link href="/dashboard/users" :active="$page.currentRouteName == 'users.index'">
+          <font-awesome-icon icon="users" />
+
+          <span class="mx-3">Usuarios</span>
         </nav-link>
 
 
@@ -151,9 +93,7 @@
       </nav>
     </div>
     <div class="flex-1 flex flex-col overflow-hidden">
-      <header
-        class="flex justify-between items-center py-4 px-6 bg-white border-b-4 border-indigo-600"
-      >
+      <header class="flex justify-between items-center py-4 px-6 bg-white border-b-2 border-gray-400">
         <div class="flex items-center">
           <button
             @click="showingNavigationDropdown = true"
@@ -342,8 +282,9 @@
 
       <!-- #End Header -->
       <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-200 main">
-        <div class="container mx-auto px-6 py-8">
+        <div class="container mx-auto px-1 md:px-6 py-8">
           <main>
+
             <slot></slot>
 
             <!-- Modal Portal -->
@@ -372,7 +313,7 @@ export default {
     Dropdown,
     DropdownLink,
     NavLink,
-    ResponsiveNavLink,
+    ResponsiveNavLink
   },
 
   data() {

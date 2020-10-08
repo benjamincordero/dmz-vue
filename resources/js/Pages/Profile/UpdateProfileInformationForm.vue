@@ -1,5 +1,5 @@
 <template>
-    <jet-form-section @submitted="updateProfileInformation">
+    <form-section @submitted="updateProfileInformation">
         <template #title>
             Profile Information
         </template>
@@ -16,7 +16,7 @@
                             ref="photo"
                             @change="updatePhotoPreview">
 
-                <jet-label for="photo" value="Photo" />
+                <label for="photo" value="Photo" />
 
                 <!-- Current Profile Photo -->
                 <div class="mx-2" v-show="! photoPreview">
@@ -38,53 +38,53 @@
                     Remove Photo
                 </jet-secondary-button>
 
-                <jet-input-error :message="form.error('photo')" class="mt-2" />
+                <input-error :message="form.error('photo')" class="mt-2" />
             </div>
 
             <!-- Name -->
-            <div class="col-span-6 sm:col-span-4">
-                <jet-label for="name" value="Name" />
+            <div class="col-span-12 md:col-span-6 sm:col-span-4">
+                <label for="name" value="Name" />
                 <jet-input id="name" type="text" class="mt-1 block w-full" v-model="form.name" autocomplete="name" />
-                <jet-input-error :message="form.error('name')" class="mt-2" />
+                <input-error :message="form.error('name')" class="mt-2" />
             </div>
 
             <!-- Email -->
-            <div class="col-span-6 sm:col-span-4">
-                <jet-label for="email" value="Email" />
+            <div class="col-span-12 md:col-span-6 sm:col-span-4">
+                <label for="email" value="Email" />
                 <jet-input id="email" type="email" class="mt-1 block w-full" v-model="form.email" />
-                <jet-input-error :message="form.error('email')" class="mt-2" />
+                <input-error :message="form.error('email')" class="mt-2" />
             </div>
         </template>
 
         <template #actions>
-            <jet-action-message :on="form.recentlySuccessful" class="mr-3">
+            <action-message :on="form.recentlySuccessful" class="mr-3">
                 Saved.
-            </jet-action-message>
+            </action-message>
 
             <jet-button :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                 Save
             </jet-button>
         </template>
-    </jet-form-section>
+    </form-section>
 </template>
 
 <script>
     import JetButton from './../../components/Button'
-    import JetFormSection from './../../components/FormSection'
+    import FormSection from './../../components/FormSection'
     import JetInput from './../../components/Input'
-    import JetInputError from './../../components/InputError'
-    import JetLabel from './../../components/Label'
-    import JetActionMessage from './../../components/ActionMessage'
+    import InputError from './../../components/InputError'
+    import Label from './../../components/Label'
+    import ActionMessage from './../../components/ActionMessage'
     import JetSecondaryButton from './../../components/SecondaryButton'
 
     export default {
         components: {
-            JetActionMessage,
+            ActionMessage,
             JetButton,
-            JetFormSection,
+            FormSection,
             JetInput,
-            JetInputError,
-            JetLabel,
+            InputError,
+            Label,
             JetSecondaryButton,
         },
 

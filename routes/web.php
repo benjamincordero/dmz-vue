@@ -20,3 +20,11 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia\Inertia::render('Dashboard');
 })->name('dashboard');
+
+Route::prefix('dashboard')->middleware(['auth'])->group(function(){
+
+    Route::resource('categories', 'CategoriesController');
+    Route::resource('users', 'UsersController');
+    Route::put('users/change_status/{user}', 'UsersController@changeStatus')->name('users.change_status');
+
+});
