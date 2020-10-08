@@ -54,8 +54,10 @@
                                     <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">
                                         {{user.role == 'user' ?  'Normal' : 'Admin'}}
                                     </td>
-                                    <td class="px-6 py-4 whitespace-no-wrap text-right text-sm leading-5 font-medium cursor-pointer">
-                                        <inertia-link :href="$route('users.edit', user.id)" class="bg-green-600 text-white hover:bg-green-500 py-1 px-1 rounded"><font-awesome-icon icon="cog"></font-awesome-icon></inertia-link>
+                                    <td class="px-6 py-4 whitespace-no-wrap text-right text-sm leading-5 font-medium">
+                                        <inertia-link :href="$route('users.edit', user.id)" class="bg-green-600 text-white hover:bg-green-500 py-1 px-1 cursor-pointer rounded">
+                                            <font-awesome-icon icon="cog"></font-awesome-icon>
+                                        </inertia-link>
                                     </td>
                                 </tr>
 
