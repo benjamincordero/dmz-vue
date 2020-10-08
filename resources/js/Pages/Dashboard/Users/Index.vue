@@ -93,7 +93,7 @@ export default {
         async statusToogle(el, id){
             this.status_form.status = el.target.checked;
             try{
-                this.$inertia.put(route('users.change_status', id), this.status_form);
+               this.$inertia.put(route('users.change_status', id), this.status_form);
             }catch(e){
                 console.log(e);
             }
