@@ -51,16 +51,10 @@
           <span class="mx-3">Categorias</span>
         </nav-link>
 
-        <nav-link href="#" :active="$page.currentRouteName == 'element2'">
-          <font-awesome-icon icon="tags" />
+        <nav-link :href="$route('logs')" :active="$page.currentRouteName == 'logs'">
+          <font-awesome-icon icon="list-alt" />
 
-          <span class="mx-3">Element 2</span>
-        </nav-link>
-
-        <nav-link href="#" :active="$page.currentRouteName == 'element3'">
-          <font-awesome-icon icon="newspaper" />
-
-          <span class="mx-3">Element 3</span>
+          <span class="mx-3">Logs</span>
         </nav-link>
 
         <nav-link

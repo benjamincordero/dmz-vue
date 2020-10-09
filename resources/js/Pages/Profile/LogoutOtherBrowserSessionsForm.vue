@@ -1,16 +1,16 @@
 <template>
     <action-section>
         <template #title>
-            Browser Sessions
+            Sesiones del navegador
         </template>
 
         <template #description>
-            Manage and logout your active sessions on other browsers and devices.
+            Administre y cierre la sesión de sus sesiones activas en otros navegadores y dispositivos.
         </template>
 
         <template #content>
             <div class="max-w-xl text-sm text-gray-600">
-                If necessary, you may logout of all of your other browser sessions across all of your devices. If you feel your account has been compromised, you should also update your password.
+                Si es necesario, puede cerrar la sesión de todas las demás sesiones de su navegador en todos sus dispositivos. Si cree que su cuenta se ha visto comprometida, también debe actualizar su contraseña.
             </div>
 
             <!-- Other Browser Sessions -->
@@ -45,7 +45,7 @@
 
             <div class="flex items-center mt-5">
                 <Button @click.native="confirmLogout" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray transition ease-in-out duration-150">
-                    Logout Other Browser Sessions1
+                    Cerrar sesión en otras sesiones del navegador
                 </Button>
 
                 <action-message :on="form.recentlySuccessful" class="ml-3">
@@ -56,13 +56,13 @@
             <!-- Logout Other Devices Confirmation Modal -->
             <dialog-modal :show="confirmingLogout" @close="confirmingLogout = false">
                 <template #title>
-                    Logout Other Browser Sessions2
+                    Cerrar sesión en otras sesiones del navegador
                 </template>
 
                 <template #content>
-                    Please enter your password to confirm you would like to logout of your other browser sessions across all of your devices.
+                    Ingrese su contraseña para confirmar que desea cerrar la sesión de sus otras sesiones de navegador en todos sus dispositivos.
 
-                    <div class="mt-4">
+                    <div class="mt-4 flex justify-around">
                         <Input type="password" class="mt-1 block w-3/4" placeholder="Password"
                                     ref="password"
                                     v-model="form.password"
@@ -74,11 +74,11 @@
 
                 <template #footer>
                     <secondary-button @click.native="confirmingLogout = false">
-                        Nevermind
+                        Cancelar
                     </secondary-button>
 
                     <Button class="ml-2" @click.native="logoutOtherBrowserSessions" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                        Logout Other Browser Sessions3
+                        Cerrar sesión en otras sesiones del navegador
                     </Button>
                 </template>
             </dialog-modal>

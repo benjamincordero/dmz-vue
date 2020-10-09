@@ -66,7 +66,7 @@
 
             <!-- Authentication -->
             <form method="POST" @submit.prevent="logout">
-              <responsive-nav-link as="button"> Logout </responsive-nav-link>
+              <responsive-nav-link as="button"> Salir </responsive-nav-link>
             </form>
           </div>
         </div>
@@ -79,10 +79,22 @@
 import ResponsiveNavLink from "../../components/ResponsiveNavLink";
 
 export default {
-  props: ["showingNavigationDropdown", "dropdownOpen"],
   components: {
       ResponsiveNavLink
 
+  },
+    data() {
+        return {
+        showingNavigationDropdown: false,
+        dropdownOpen: false,
+        };
+    },
+  methods: {
+    logout() {
+      axios.post("/logout").then((response) => {
+        window.location = "/";
+      });
+    },
   },
 };
 </script>

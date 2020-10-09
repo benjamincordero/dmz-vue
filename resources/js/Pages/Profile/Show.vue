@@ -8,21 +8,18 @@
                             :name="$page.user.name"
                             :email="$page.user.email" />
 
-                <section-border />
 
-                <update-password-form class="mt-10 sm:mt-0" />
-                <logout-other-browser-sessions-form :sessions="sessions" class="mb-10 sm:mt-0" />
+                <update-password-form class="mt-0 sm:mt-2" />
+
+                <logout-other-browser-sessions-form :sessions="sessions" class="my-2 sm:mt-0" />
 
                 <div v-if="$page.jetstream.canManageTwoFactorAuthentication">
                     <section-border />
 
-                    <two-factor-authentication-form class="mt-10 sm:mt-0" />
+                    <two-factor-authentication-form class="my-2 sm:mt-0" />
                 </div>
 
-                <section-border />
 
-
-                <section-border />
 
                 <delete-user-form class="mt-10 sm:mt-0" />
             </div>

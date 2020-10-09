@@ -1,169 +1,183 @@
 <template>
-    <action-section>
-        <template #title>
-            Two Factor Authentication
-        </template>
+  <action-section>
+    <template #title> Autenticación de dos factores </template>
 
-        <template #description>
-            Add additional security to your account using two factor authentication.
-        </template>
+    <template #description>
+      Agregue seguridad adicional a su cuenta mediante la autenticación de dos
+      factores.
+    </template>
 
-        <template #content>
-            <h3 class="text-lg font-medium text-gray-900" v-if="twoFactorEnabled">
-                You have enabled two factor authentication.
-            </h3>
+    <template #content>
+      <h3 class="text-lg font-medium text-gray-900" v-if="twoFactorEnabled">
+        Ha habilitado la autenticación de dos factores.
+      </h3>
 
-            <h3 class="text-lg font-medium text-gray-900" v-else>
-                You have not enabled two factor authentication.
-            </h3>
+      <h3 class="text-lg font-medium text-gray-900" v-else>
+        No ha habilitado la autenticación de dos factores.
+      </h3>
 
-            <div class="mt-3 max-w-xl text-sm text-gray-600">
-                <p>
-                    When two factor authentication is enabled, you will be prompted for a secure, random token during authentication. You may retrieve this token from your phone's Google Authenticator application.
-                </p>
+      <div class="mt-3 max-w-xl text-sm text-gray-600">
+        <p>
+          Cuando la autenticación de dos factores está habilitada, se le pedirá
+          un token aleatorio seguro durante la autenticación. Puede recuperar
+          este token de la aplicación Google Authenticator de su teléfono.
+        </p>
+      </div>
+
+      <div v-if="twoFactorEnabled">
+        <div v-if="qrCode">
+          <div class="mt-4 max-w-xl text-sm text-gray-600">
+            <p class="font-semibold">
+              La autenticación de dos factores ahora está habilitada. Escanee el
+              siguiente código QR utilizando la aplicación de autenticación de
+              su teléfono.
+            </p>
+          </div>
+
+          <div class="mt-4" v-html="qrCode"></div>
+        </div>
+
+        <div v-if="recoveryCodes.length > 0">
+          <div class="mt-4 max-w-xl text-sm text-gray-600">
+            <p class="font-semibold">
+              Guarde estos códigos de recuperación en un administrador de
+              contraseñas seguro. Se pueden utilizar para recuperar el acceso a
+              su cuenta si pierde su dispositivo de autenticación de dos
+              factores.
+            </p>
+          </div>
+
+          <div
+            class="grid gap-1 max-w-xl mt-4 px-4 py-4 font-mono text-sm bg-gray-100 rounded-lg"
+          >
+            <div v-for="code in recoveryCodes">
+              {{ code }}
             </div>
+          </div>
+        </div>
+      </div>
 
-            <div v-if="twoFactorEnabled">
-                <div v-if="qrCode">
-                    <div class="mt-4 max-w-xl text-sm text-gray-600">
-                        <p class="font-semibold">
-                            Two factor authentication is now enabled. Scan the following QR code using your phone's authenticator application.
-                        </p>
-                    </div>
+      <div class="mt-5">
+        <div v-if="!twoFactorEnabled">
+          <confirms-password @confirmed="enableTwoFactorAuthentication">
+            <Button
+              type="button"
+              :class="{ 'opacity-25': enabling }"
+              :disabled="enabling"
+            >
+              Habilitar
+            </Button>
+          </confirms-password>
+        </div>
 
-                    <div class="mt-4" v-html="qrCode">
-                    </div>
-                </div>
+        <div v-else>
+          <confirms-password @confirmed="regenerateRecoveryCodes">
+            <secondary-button class="mr-3" v-if="recoveryCodes.length > 0">
+              Regenerar códigos de recuperación
+            </secondary-button>
+          </confirms-password>
 
-                <div v-if="recoveryCodes.length > 0">
-                    <div class="mt-4 max-w-xl text-sm text-gray-600">
-                        <p class="font-semibold">
-                            Store these recovery codes in a secure password manager. They can be used to recover access to your account if your two factor authentication device is lost.
-                        </p>
-                    </div>
+          <confirms-password @confirmed="showRecoveryCodes">
+            <secondary-button class="mr-3" v-if="recoveryCodes.length == 0">
+              Mostrar códigos de recuperación
+            </secondary-button>
+          </confirms-password>
 
-                    <div class="grid gap-1 max-w-xl mt-4 px-4 py-4 font-mono text-sm bg-gray-100 rounded-lg">
-                        <div v-for="code in recoveryCodes">
-                            {{ code }}
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mt-5">
-                <div v-if="! twoFactorEnabled">
-                    <confirms-password @confirmed="enableTwoFactorAuthentication">
-                        <Button type="button" :class="{ 'opacity-25': enabling }" :disabled="enabling">
-                            Enable
-                        </Button>
-                    </confirms-password>
-                </div>
-
-                <div v-else>
-                    <confirms-password @confirmed="regenerateRecoveryCodes">
-                        <secondary-button class="mr-3"
-                                        v-if="recoveryCodes.length > 0">
-                            Regenerate Recovery Codes
-                        </secondary-button>
-                    </confirms-password>
-
-                    <confirms-password @confirmed="showRecoveryCodes">
-                        <secondary-button class="mr-3" v-if="recoveryCodes.length == 0">
-                            Show Recovery Codes
-                        </secondary-button>
-                    </confirms-password>
-
-                    <confirms-password @confirmed="disableTwoFactorAuthentication">
-                        <danger-button
-                                        :class="{ 'opacity-25': disabling }"
-                                        :disabled="disabling">
-                            Disable
-                        </danger-button>
-                    </confirms-password>
-                </div>
-            </div>
-        </template>
-    </action-section>
+          <confirms-password @confirmed="disableTwoFactorAuthentication">
+            <danger-button
+              :class="{ 'opacity-25': disabling }"
+              :disabled="disabling"
+            >
+              Inhabilitar
+            </danger-button>
+          </confirms-password>
+        </div>
+      </div>
+    </template>
+  </action-section>
 </template>
 
 <script>
-    import ActionSection from './../../components/ActionSection'
-    import Button from './../../components/Button'
-    import ConfirmsPassword from './../../components/ConfirmsPassword'
-    import DangerButton from './../../components/DangerButton'
-    import SecondaryButton from './../../components/SecondaryButton'
+import ActionSection from "./../../components/ActionSection";
+import Button from "./../../components/Button";
+import ConfirmsPassword from "./../../components/ConfirmsPassword";
+import DangerButton from "./../../components/DangerButton";
+import SecondaryButton from "./../../components/SecondaryButton";
 
-    export default {
-        components: {
-            ActionSection,
-            Button,
-            ConfirmsPassword,
-            DangerButton,
-            SecondaryButton,
-        },
+export default {
+  components: {
+    ActionSection,
+    Button,
+    ConfirmsPassword,
+    DangerButton,
+    SecondaryButton,
+  },
 
-        data() {
-            return {
-                enabling: false,
-                disabling: false,
+  data() {
+    return {
+      enabling: false,
+      disabling: false,
 
-                qrCode: null,
-                recoveryCodes: [],
-            }
-        },
+      qrCode: null,
+      recoveryCodes: [],
+    };
+  },
 
-        methods: {
-            enableTwoFactorAuthentication() {
-                this.enabling = true
+  methods: {
+    enableTwoFactorAuthentication() {
+      this.enabling = true;
 
-                this.$inertia.post('/user/two-factor-authentication', {}, {
-                    preserveScroll: true,
-                }).then(() => {
-                    return Promise.all([
-                        this.showQrCode(),
-                        this.showRecoveryCodes()
-                    ])
-                }).then(() => {
-                    this.enabling = false
-                })
-            },
+      this.$inertia
+        .post(
+          "/user/two-factor-authentication",
+          {},
+          {
+            preserveScroll: true,
+          }
+        )
+        .then(() => {
+          return Promise.all([this.showQrCode(), this.showRecoveryCodes()]);
+        })
+        .then(() => {
+          this.enabling = false;
+        });
+    },
 
-            showQrCode() {
-                return axios.get('/user/two-factor-qr-code')
-                        .then(response => {
-                            this.qrCode = response.data.svg
-                        })
-            },
+    showQrCode() {
+      return axios.get("/user/two-factor-qr-code").then((response) => {
+        this.qrCode = response.data.svg;
+      });
+    },
 
-            showRecoveryCodes() {
-                return axios.get('/user/two-factor-recovery-codes')
-                        .then(response => {
-                            this.recoveryCodes = response.data
-                        })
-            },
+    showRecoveryCodes() {
+      return axios.get("/user/two-factor-recovery-codes").then((response) => {
+        this.recoveryCodes = response.data;
+      });
+    },
 
-            regenerateRecoveryCodes() {
-                axios.post('/user/two-factor-recovery-codes')
-                        .then(response => {
-                            this.showRecoveryCodes()
-                        })
-            },
+    regenerateRecoveryCodes() {
+      axios.post("/user/two-factor-recovery-codes").then((response) => {
+        this.showRecoveryCodes();
+      });
+    },
 
-            disableTwoFactorAuthentication() {
-                this.disabling = true
+    disableTwoFactorAuthentication() {
+      this.disabling = true;
 
-                this.$inertia.delete('/user/two-factor-authentication', {
-                    preserveScroll: true,
-                }).then(() => {
-                    this.disabling = false
-                })
-            },
-        },
+      this.$inertia
+        .delete("/user/two-factor-authentication", {
+          preserveScroll: true,
+        })
+        .then(() => {
+          this.disabling = false;
+        });
+    },
+  },
 
-        computed: {
-            twoFactorEnabled() {
-                return ! this.enabling && this.$page.user.two_factor_enabled
-            }
-        }
-    }
+  computed: {
+    twoFactorEnabled() {
+      return !this.enabling && this.$page.user.two_factor_enabled;
+    },
+  },
+};
 </script>

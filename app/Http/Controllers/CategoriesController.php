@@ -10,6 +10,9 @@ use App\Models\Category;
 
 class CategoriesController extends Controller
 {
+    public function __construct(){
+        $this->middleware('logs', ['except'=>['index', 'edit', 'create']]);
+    }
 
     public function index()
     {

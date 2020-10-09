@@ -1,28 +1,28 @@
 <template>
     <form-section @submitted="updatePassword">
         <template #title>
-            Update Password
+           Actualiza contraseña
         </template>
 
         <template #description>
-            Ensure your account is using a long, random password to stay secure.
+            Asegúrese de que su cuenta esté usando una contraseña larga y aleatoria para mantenerse seguro.
         </template>
 
         <template #form>
             <div class="col-span-6 sm:col-span-4">
-                <Label for="current_password" value="Current Password" />
+                <Label for="current_password" value="Contraseña Actual" />
                 <Input id="current_password" type="password" class="mt-1 block w-full" v-model="form.current_password" ref="current_password" autocomplete="current-password" />
                 <input-error :message="form.error('current_password')" class="mt-2" />
             </div>
 
             <div class="col-span-6 sm:col-span-4">
-                <Label for="password" value="New Password" />
+                <Label for="password" value="Nueva Contraseña" />
                 <Input id="password" type="password" class="mt-1 block w-full" v-model="form.password" autocomplete="new-password" />
                 <input-error :message="form.error('password')" class="mt-2" />
             </div>
 
             <div class="col-span-6 sm:col-span-4">
-                <Label for="password_confirmation" value="Confirm Password" />
+                <Label for="password_confirmation" value="Confirmar Contraseña" />
                 <Input id="password_confirmation" type="password" class="mt-1 block w-full" v-model="form.password_confirmation" autocomplete="new-password" />
                 <input-error :message="form.error('password_confirmation')" class="mt-2" />
             </div>
@@ -30,11 +30,11 @@
 
         <template #actions>
             <action-message :on="form.recentlySuccessful" class="mr-3">
-                Saved.
+                Guardado.
             </action-message>
 
             <Button :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                Save
+                Guardar
             </Button>
         </template>
     </form-section>

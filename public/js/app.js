@@ -12589,13 +12589,6 @@ __webpack_require__.r(__webpack_exports__);
       dropdownOpen: false
     };
   },
-  methods: {
-    logout: function logout() {
-      axios.post("/logout").then(function (response) {
-        window.location = "/";
-      });
-    }
-  },
   computed: {
     path: function path() {
       return window.location.pathname;
@@ -12615,12 +12608,6 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_NavLink__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../components/NavLink */ "./resources/js/components/NavLink.vue");
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -12791,9 +12778,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ["showingNavigationDropdown", "dropdownOpen"],
   components: {
     ResponsiveNavLink: _components_ResponsiveNavLink__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  data: function data() {
+    return {
+      showingNavigationDropdown: false,
+      dropdownOpen: false
+    };
+  },
+  methods: {
+    logout: function logout() {
+      axios.post("/logout").then(function (response) {
+        window.location = "/";
+      });
+    }
   }
 });
 
@@ -13374,6 +13373,113 @@ __webpack_require__.r(__webpack_exports__);
     Icon: vue_md_icons__WEBPACK_IMPORTED_MODULE_1___default.a
   },
   created: function created() {//console.log(this.categories.data)
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Pages/Dashboard/Logs.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Pages/Dashboard/Logs.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../Layouts/AppLayout */ "./resources/js/Layouts/AppLayout.vue");
+/* harmony import */ var _components_Pagination__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components/Pagination */ "./resources/js/components/Pagination.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ["logs", "search_text"],
+  components: {
+    AppLayout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__["default"],
+    Pagination: _components_Pagination__WEBPACK_IMPORTED_MODULE_1__["default"]
+  },
+  data: function data() {
+    return {
+      search_state: this.search_text
+    };
+  },
+  methods: {
+    search: function search() {
+      this.$inertia.visit(route("logs") + '?search=' + this.search_state);
+    },
+    focusSearch: function focusSearch() {
+      var _this = this;
+
+      setTimeout(function () {
+        _this.$refs.search.focus();
+      });
+    }
+  },
+  created: function created() {
+    if (this.search_state) {
+      this.focusSearch();
+    }
   }
 });
 
@@ -14115,9 +14221,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 
 
 
@@ -14242,6 +14345,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -14268,7 +14382,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.enabling = true;
-      this.$inertia.post('/user/two-factor-authentication', {}, {
+      this.$inertia.post("/user/two-factor-authentication", {}, {
         preserveScroll: true
       }).then(function () {
         return Promise.all([_this.showQrCode(), _this.showRecoveryCodes()]);
@@ -14279,21 +14393,21 @@ __webpack_require__.r(__webpack_exports__);
     showQrCode: function showQrCode() {
       var _this2 = this;
 
-      return axios.get('/user/two-factor-qr-code').then(function (response) {
+      return axios.get("/user/two-factor-qr-code").then(function (response) {
         _this2.qrCode = response.data.svg;
       });
     },
     showRecoveryCodes: function showRecoveryCodes() {
       var _this3 = this;
 
-      return axios.get('/user/two-factor-recovery-codes').then(function (response) {
+      return axios.get("/user/two-factor-recovery-codes").then(function (response) {
         _this3.recoveryCodes = response.data;
       });
     },
     regenerateRecoveryCodes: function regenerateRecoveryCodes() {
       var _this4 = this;
 
-      axios.post('/user/two-factor-recovery-codes').then(function (response) {
+      axios.post("/user/two-factor-recovery-codes").then(function (response) {
         _this4.showRecoveryCodes();
       });
     },
@@ -14301,7 +14415,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this5 = this;
 
       this.disabling = true;
-      this.$inertia["delete"]('/user/two-factor-authentication', {
+      this.$inertia["delete"]("/user/two-factor-authentication", {
         preserveScroll: true
       }).then(function () {
         _this5.disabling = false;
@@ -37015,30 +37129,14 @@ var render = function() {
             "nav-link",
             {
               attrs: {
-                href: "#",
-                active: _vm.$page.currentRouteName == "element2"
+                href: _vm.$route("logs"),
+                active: _vm.$page.currentRouteName == "logs"
               }
             },
             [
-              _c("font-awesome-icon", { attrs: { icon: "tags" } }),
+              _c("font-awesome-icon", { attrs: { icon: "list-alt" } }),
               _vm._v(" "),
-              _c("span", { staticClass: "mx-3" }, [_vm._v("Element 2")])
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "nav-link",
-            {
-              attrs: {
-                href: "#",
-                active: _vm.$page.currentRouteName == "element3"
-              }
-            },
-            [
-              _c("font-awesome-icon", { attrs: { icon: "newspaper" } }),
-              _vm._v(" "),
-              _c("span", { staticClass: "mx-3" }, [_vm._v("Element 3")])
+              _c("span", { staticClass: "mx-3" }, [_vm._v("Logs")])
             ],
             1
           ),
@@ -37226,7 +37324,7 @@ var render = function() {
                 },
                 [
                   _c("responsive-nav-link", { attrs: { as: "button" } }, [
-                    _vm._v(" Logout ")
+                    _vm._v(" Salir ")
                   ])
                 ],
                 1
@@ -38396,6 +38494,230 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Pages/Dashboard/Logs.vue?vue&type=template&id=22118d53&":
+/*!************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Pages/Dashboard/Logs.vue?vue&type=template&id=22118d53& ***!
+  \************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("AppLayout", [
+    _c(
+      "div",
+      { staticClass: "bg-white shadow overflow-hidden sm:rounded-lg" },
+      [
+        _c(
+          "div",
+          { staticClass: "flex px-4 py-5 border-b border-gray-200 sm:px-6" },
+          [
+            _c(
+              "h3",
+              {
+                staticClass: "text-lg leading-6 font-medium text-gray-600 w-1/2"
+              },
+              [
+                _c("font-awesome-icon", { attrs: { icon: "list-alt" } }),
+                _vm._v(" Logs\n      ")
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "w-1/2" }, [
+              _c(
+                "form",
+                {
+                  on: {
+                    submit: function($event) {
+                      $event.preventDefault()
+                      return _vm.search($event)
+                    }
+                  }
+                },
+                [
+                  _c(
+                    "div",
+                    { staticClass: "pt-2 relative mx-auto text-gray-600" },
+                    [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.search_state,
+                            expression: "search_state"
+                          }
+                        ],
+                        ref: "search",
+                        staticClass:
+                          "border-2 w-full border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none",
+                        attrs: {
+                          type: "search",
+                          name: "search",
+                          placeholder: "Buscar..."
+                        },
+                        domProps: { value: _vm.search_state },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.search_state = $event.target.value
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "absolute right-0 top-0 mt-5 mr-4",
+                          attrs: { type: "submit" }
+                        },
+                        [
+                          _c("font-awesome-icon", {
+                            staticClass: "text-gray-600 h-4 w-4 fill-current",
+                            attrs: { icon: "search" }
+                          })
+                        ],
+                        1
+                      )
+                    ]
+                  )
+                ]
+              )
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "bg-gray-50 px-4 sm:px-6" }, [
+          _c("div", { staticClass: "flex flex-col" }, [
+            _c(
+              "div",
+              { staticClass: "my-2 overflow-x-auto sm:-mx-6 lg:-mx-8" },
+              [
+                _c(
+                  "div",
+                  { staticClass: "align-middle inline-block min-w-full" },
+                  [
+                    _c(
+                      "div",
+                      { staticClass: "shadow overflow-hidden border-gray-200" },
+                      [
+                        _c(
+                          "table",
+                          {
+                            staticClass: "min-w-full divide-y divide-gray-200"
+                          },
+                          [
+                            _c("thead", [
+                              _c("tr", [
+                                _c(
+                                  "th",
+                                  {
+                                    staticClass:
+                                      "px-6 font-bold py-2 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                      Usuario\n                    "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "th",
+                                  {
+                                    staticClass:
+                                      "px-6 font-bold py-2 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                      Ruta\n                    "
+                                    )
+                                  ]
+                                )
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "tbody",
+                              {
+                                staticClass: "bg-white divide-y divide-gray-200"
+                              },
+                              _vm._l(_vm.logs.data, function(log) {
+                                return _c("tr", { key: log.id }, [
+                                  _c(
+                                    "td",
+                                    {
+                                      staticClass:
+                                        "px-6 py-4 whitespace-no-wrap"
+                                    },
+                                    [
+                                      _c(
+                                        "div",
+                                        { staticClass: "flex items-center" },
+                                        [
+                                          _vm._v(
+                                            "\n                        " +
+                                              _vm._s(log.user.name) +
+                                              "\n                      "
+                                          )
+                                        ]
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "td",
+                                    {
+                                      staticClass:
+                                        "px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500"
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                      " +
+                                          _vm._s(log.action) +
+                                          "\n                    "
+                                      )
+                                    ]
+                                  )
+                                ])
+                              }),
+                              0
+                            )
+                          ]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("pagination", {
+                      attrs: { links: _vm.logs.links, items: _vm.logs }
+                    })
+                  ],
+                  1
+                )
+              ]
+            )
+          ])
+        ])
+      ]
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Pages/Dashboard/Users/Create.vue?vue&type=template&id=52f538a7&":
 /*!********************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Pages/Dashboard/Users/Create.vue?vue&type=template&id=52f538a7& ***!
@@ -39170,14 +39492,14 @@ var render = function() {
       {
         key: "title",
         fn: function() {
-          return [_vm._v("\n        Delete Account\n    ")]
+          return [_vm._v("\n        Eliminar cuenta\n    ")]
         },
         proxy: true
       },
       {
         key: "description",
         fn: function() {
-          return [_vm._v("\n        Permanently delete your account.\n    ")]
+          return [_vm._v("\n        Elimina permanentemente tu cuenta.\n    ")]
         },
         proxy: true
       },
@@ -39185,9 +39507,9 @@ var render = function() {
         key: "content",
         fn: function() {
           return [
-            _c("div", { staticClass: "max-w-xl text-sm text-gray-600" }, [
+            _c("div", { staticClass: "w-full text-sm text-gray-600" }, [
               _vm._v(
-                "\n            Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.\n        "
+                "\n           Una vez que se elimine su cuenta, todos sus recursos y datos se eliminarán permanentemente. Antes de eliminar su cuenta, descargue cualquier dato o información que desee conservar.\n        "
               )
             ]),
             _vm._v(" "),
@@ -39204,7 +39526,7 @@ var render = function() {
                       }
                     }
                   },
-                  [_vm._v("\n                Delete Account\n            ")]
+                  [_vm._v("\n                Eliminar Cuenta\n            ")]
                 )
               ],
               1
@@ -39222,7 +39544,7 @@ var render = function() {
                   key: "title",
                   fn: function() {
                     return [
-                      _vm._v("\n                Delete Account\n            ")
+                      _vm._v("\n                Eliminar cuenta\n            ")
                     ]
                   },
                   proxy: true
@@ -39232,15 +39554,15 @@ var render = function() {
                   fn: function() {
                     return [
                       _vm._v(
-                        "\n                Are you sure you want to delete your account? Once your account is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account.\n\n                "
+                        "\n               ¿Estás seguro de que deseas eliminar tu cuenta? Una vez que se elimine su cuenta, todos sus recursos y datos se eliminarán permanentemente. Ingrese su contraseña para confirmar que desea eliminar permanentemente su cuenta.\n\n                "
                       ),
                       _c(
                         "div",
-                        { staticClass: "mt-4" },
+                        { staticClass: "mt-4 flex justify-around" },
                         [
                           _c("Input", {
                             ref: "password",
-                            staticClass: "mt-1 block w-3/4",
+                            staticClass: "mt-1 block w-2/4",
                             attrs: {
                               type: "password",
                               placeholder: "Password"
@@ -39297,7 +39619,7 @@ var render = function() {
                         },
                         [
                           _vm._v(
-                            "\n                    Nevermind\n                "
+                            "\n                  Cancelar\n                "
                           )
                         ]
                       ),
@@ -39316,7 +39638,7 @@ var render = function() {
                         },
                         [
                           _vm._v(
-                            "\n                    Delete Account\n                "
+                            "\n                    Eliminar cuenta\n                "
                           )
                         ]
                       )
@@ -39360,7 +39682,7 @@ var render = function() {
       {
         key: "title",
         fn: function() {
-          return [_vm._v("\n        Browser Sessions\n    ")]
+          return [_vm._v("\n        Sesiones del navegador\n    ")]
         },
         proxy: true
       },
@@ -39369,7 +39691,7 @@ var render = function() {
         fn: function() {
           return [
             _vm._v(
-              "\n        Manage and logout your active sessions on other browsers and devices.\n    "
+              "\n        Administre y cierre la sesión de sus sesiones activas en otros navegadores y dispositivos.\n    "
             )
           ]
         },
@@ -39381,7 +39703,7 @@ var render = function() {
           return [
             _c("div", { staticClass: "max-w-xl text-sm text-gray-600" }, [
               _vm._v(
-                "\n            If necessary, you may logout of all of your other browser sessions across all of your devices. If you feel your account has been compromised, you should also update your password.\n        "
+                "\n            Si es necesario, puede cerrar la sesión de todas las demás sesiones de su navegador en todos sus dispositivos. Si cree que su cuenta se ha visto comprometida, también debe actualizar su contraseña.\n        "
               )
             ]),
             _vm._v(" "),
@@ -39519,7 +39841,7 @@ var render = function() {
                   },
                   [
                     _vm._v(
-                      "\n                Logout Other Browser Sessions1\n            "
+                      "\n                Cerrar sesión en otras sesiones del navegador\n            "
                     )
                   ]
                 ),
@@ -39549,7 +39871,7 @@ var render = function() {
                   fn: function() {
                     return [
                       _vm._v(
-                        "\n                Logout Other Browser Sessions2\n            "
+                        "\n                Cerrar sesión en otras sesiones del navegador\n            "
                       )
                     ]
                   },
@@ -39560,11 +39882,11 @@ var render = function() {
                   fn: function() {
                     return [
                       _vm._v(
-                        "\n                Please enter your password to confirm you would like to logout of your other browser sessions across all of your devices.\n\n                "
+                        "\n                Ingrese su contraseña para confirmar que desea cerrar la sesión de sus otras sesiones de navegador en todos sus dispositivos.\n\n                "
                       ),
                       _c(
                         "div",
-                        { staticClass: "mt-4" },
+                        { staticClass: "mt-4 flex justify-around" },
                         [
                           _c("Input", {
                             ref: "password",
@@ -39625,7 +39947,7 @@ var render = function() {
                         },
                         [
                           _vm._v(
-                            "\n                    Nevermind\n                "
+                            "\n                    Cancelar\n                "
                           )
                         ]
                       ),
@@ -39644,7 +39966,7 @@ var render = function() {
                         },
                         [
                           _vm._v(
-                            "\n                    Logout Other Browser Sessions3\n                "
+                            "\n                    Cerrar sesión en otras sesiones del navegador\n                "
                           )
                         ]
                       )
@@ -39693,12 +40015,10 @@ var render = function() {
             attrs: { name: _vm.$page.user.name, email: _vm.$page.user.email }
           }),
           _vm._v(" "),
-          _c("section-border"),
-          _vm._v(" "),
-          _c("update-password-form", { staticClass: "mt-10 sm:mt-0" }),
+          _c("update-password-form", { staticClass: "mt-0 sm:mt-2" }),
           _vm._v(" "),
           _c("logout-other-browser-sessions-form", {
-            staticClass: "mb-10 sm:mt-0",
+            staticClass: "my-2 sm:mt-0",
             attrs: { sessions: _vm.sessions }
           }),
           _vm._v(" "),
@@ -39709,16 +40029,12 @@ var render = function() {
                   _c("section-border"),
                   _vm._v(" "),
                   _c("two-factor-authentication-form", {
-                    staticClass: "mt-10 sm:mt-0"
+                    staticClass: "my-2 sm:mt-0"
                   })
                 ],
                 1
               )
             : _vm._e(),
-          _vm._v(" "),
-          _c("section-border"),
-          _vm._v(" "),
-          _c("section-border"),
           _vm._v(" "),
           _c("delete-user-form", { staticClass: "mt-10 sm:mt-0" })
         ],
@@ -39754,7 +40070,7 @@ var render = function() {
       {
         key: "title",
         fn: function() {
-          return [_vm._v("\n        Two Factor Authentication\n    ")]
+          return [_vm._v(" Autenticación de dos factores ")]
         },
         proxy: true
       },
@@ -39763,7 +40079,7 @@ var render = function() {
         fn: function() {
           return [
             _vm._v(
-              "\n        Add additional security to your account using two factor authentication.\n    "
+              "\n    Agregue seguridad adicional a su cuenta mediante la autenticación de dos\n    factores.\n  "
             )
           ]
         },
@@ -39776,19 +40092,19 @@ var render = function() {
             _vm.twoFactorEnabled
               ? _c("h3", { staticClass: "text-lg font-medium text-gray-900" }, [
                   _vm._v(
-                    "\n            You have enabled two factor authentication.\n        "
+                    "\n      Ha habilitado la autenticación de dos factores.\n    "
                   )
                 ])
               : _c("h3", { staticClass: "text-lg font-medium text-gray-900" }, [
                   _vm._v(
-                    "\n            You have not enabled two factor authentication.\n        "
+                    "\n      No ha habilitado la autenticación de dos factores.\n    "
                   )
                 ]),
             _vm._v(" "),
             _c("div", { staticClass: "mt-3 max-w-xl text-sm text-gray-600" }, [
               _c("p", [
                 _vm._v(
-                  "\n                When two factor authentication is enabled, you will be prompted for a secure, random token during authentication. You may retrieve this token from your phone's Google Authenticator application.\n            "
+                  "\n        Cuando la autenticación de dos factores está habilitada, se le pedirá\n        un token aleatorio seguro durante la autenticación. Puede recuperar\n        este token de la aplicación Google Authenticator de su teléfono.\n      "
                 )
               ])
             ]),
@@ -39805,7 +40121,7 @@ var render = function() {
                           [
                             _c("p", { staticClass: "font-semibold" }, [
                               _vm._v(
-                                "\n                        Two factor authentication is now enabled. Scan the following QR code using your phone's authenticator application.\n                    "
+                                "\n            La autenticación de dos factores ahora está habilitada. Escanee el\n            siguiente código QR utilizando la aplicación de autenticación de\n            su teléfono.\n          "
                               )
                             ])
                           ]
@@ -39828,7 +40144,7 @@ var render = function() {
                           [
                             _c("p", { staticClass: "font-semibold" }, [
                               _vm._v(
-                                "\n                        Store these recovery codes in a secure password manager. They can be used to recover access to your account if your two factor authentication device is lost.\n                    "
+                                "\n            Guarde estos códigos de recuperación en un administrador de\n            contraseñas seguro. Se pueden utilizar para recuperar el acceso a\n            su cuenta si pierde su dispositivo de autenticación de dos\n            factores.\n          "
                               )
                             ])
                           ]
@@ -39843,9 +40159,7 @@ var render = function() {
                           _vm._l(_vm.recoveryCodes, function(code) {
                             return _c("div", [
                               _vm._v(
-                                "\n                        " +
-                                  _vm._s(code) +
-                                  "\n                    "
+                                "\n            " + _vm._s(code) + "\n          "
                               )
                             ])
                           }),
@@ -39873,11 +40187,7 @@ var render = function() {
                               class: { "opacity-25": _vm.enabling },
                               attrs: { type: "button", disabled: _vm.enabling }
                             },
-                            [
-                              _vm._v(
-                                "\n                        Enable\n                    "
-                              )
-                            ]
+                            [_vm._v("\n            Habilitar\n          ")]
                           )
                         ],
                         1
@@ -39895,7 +40205,7 @@ var render = function() {
                           _vm.recoveryCodes.length > 0
                             ? _c("secondary-button", { staticClass: "mr-3" }, [
                                 _vm._v(
-                                  "\n                        Regenerate Recovery Codes\n                    "
+                                  "\n            Regenerar códigos de recuperación\n          "
                                 )
                               ])
                             : _vm._e()
@@ -39910,7 +40220,7 @@ var render = function() {
                           _vm.recoveryCodes.length == 0
                             ? _c("secondary-button", { staticClass: "mr-3" }, [
                                 _vm._v(
-                                  "\n                        Show Recovery Codes\n                    "
+                                  "\n            Mostrar códigos de recuperación\n          "
                                 )
                               ])
                             : _vm._e()
@@ -39930,11 +40240,7 @@ var render = function() {
                               class: { "opacity-25": _vm.disabling },
                               attrs: { disabled: _vm.disabling }
                             },
-                            [
-                              _vm._v(
-                                "\n                        Disable\n                    "
-                              )
-                            ]
+                            [_vm._v("\n            Inhabilitar\n          ")]
                           )
                         ],
                         1
@@ -39978,7 +40284,7 @@ var render = function() {
       {
         key: "title",
         fn: function() {
-          return [_vm._v("\n        Update Password\n    ")]
+          return [_vm._v("\n       Actualiza contraseña\n    ")]
         },
         proxy: true
       },
@@ -39987,7 +40293,7 @@ var render = function() {
         fn: function() {
           return [
             _vm._v(
-              "\n        Ensure your account is using a long, random password to stay secure.\n    "
+              "\n        Asegúrese de que su cuenta esté usando una contraseña larga y aleatoria para mantenerse seguro.\n    "
             )
           ]
         },
@@ -40002,7 +40308,7 @@ var render = function() {
               { staticClass: "col-span-6 sm:col-span-4" },
               [
                 _c("Label", {
-                  attrs: { for: "current_password", value: "Current Password" }
+                  attrs: { for: "current_password", value: "Contraseña Actual" }
                 }),
                 _vm._v(" "),
                 _c("Input", {
@@ -40035,7 +40341,7 @@ var render = function() {
               { staticClass: "col-span-6 sm:col-span-4" },
               [
                 _c("Label", {
-                  attrs: { for: "password", value: "New Password" }
+                  attrs: { for: "password", value: "Nueva Contraseña" }
                 }),
                 _vm._v(" "),
                 _c("Input", {
@@ -40069,7 +40375,7 @@ var render = function() {
                 _c("Label", {
                   attrs: {
                     for: "password_confirmation",
-                    value: "Confirm Password"
+                    value: "Confirmar Contraseña"
                   }
                 }),
                 _vm._v(" "),
@@ -40110,7 +40416,7 @@ var render = function() {
                 staticClass: "mr-3",
                 attrs: { on: _vm.form.recentlySuccessful }
               },
-              [_vm._v("\n            Saved.\n        ")]
+              [_vm._v("\n            Guardado.\n        ")]
             ),
             _vm._v(" "),
             _c(
@@ -40119,7 +40425,7 @@ var render = function() {
                 class: { "opacity-25": _vm.form.processing },
                 attrs: { disabled: _vm.form.processing }
               },
-              [_vm._v("\n            Save\n        ")]
+              [_vm._v("\n            Guardar\n        ")]
             )
           ]
         },
@@ -40156,7 +40462,7 @@ var render = function() {
       {
         key: "title",
         fn: function() {
-          return [_vm._v("\n        Profile Information\n    ")]
+          return [_vm._v("\n        Información del Perfil\n    ")]
         },
         proxy: true
       },
@@ -40165,7 +40471,7 @@ var render = function() {
         fn: function() {
           return [
             _vm._v(
-              "\n        Update your account's profile information and email address.\n    "
+              "\n        Actualice la información de perfil y la dirección de correo electrónico de su cuenta.\n    "
             )
           ]
         },
@@ -40252,7 +40558,7 @@ var render = function() {
                       },
                       [
                         _vm._v(
-                          "\n                Select A New Photo\n            "
+                          "\n                Seleccione una nueva foto\n            "
                         )
                       ]
                     ),
@@ -40272,7 +40578,7 @@ var render = function() {
                           },
                           [
                             _vm._v(
-                              "\n                Remove Photo\n            "
+                              "\n                Quitar foto\n            "
                             )
                           ]
                         )
@@ -40352,7 +40658,7 @@ var render = function() {
                 staticClass: "mr-3",
                 attrs: { on: _vm.form.recentlySuccessful }
               },
-              [_vm._v("\n            Saved.\n        ")]
+              [_vm._v("\n            Guardado.\n        ")]
             ),
             _vm._v(" "),
             _c(
@@ -40361,7 +40667,7 @@ var render = function() {
                 class: { "opacity-25": _vm.form.processing },
                 attrs: { disabled: _vm.form.processing }
               },
-              [_vm._v("\n            Save\n        ")]
+              [_vm._v("\n            Guardar\n        ")]
             )
           ]
         },
@@ -41386,7 +41692,7 @@ var render = function() {
     "div",
     {
       staticClass:
-        "bg-white px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6"
+        "bg-white px-4 py-2 flex items-center justify-between border-t border-gray-200 "
     },
     [
       _c(
@@ -55055,6 +55361,8 @@ var map = {
 	"./Dashboard/Categories/Form.vue": "./resources/js/Pages/Dashboard/Categories/Form.vue",
 	"./Dashboard/Categories/Index": "./resources/js/Pages/Dashboard/Categories/Index.vue",
 	"./Dashboard/Categories/Index.vue": "./resources/js/Pages/Dashboard/Categories/Index.vue",
+	"./Dashboard/Logs": "./resources/js/Pages/Dashboard/Logs.vue",
+	"./Dashboard/Logs.vue": "./resources/js/Pages/Dashboard/Logs.vue",
 	"./Dashboard/Users/Create": "./resources/js/Pages/Dashboard/Users/Create.vue",
 	"./Dashboard/Users/Create.vue": "./resources/js/Pages/Dashboard/Users/Create.vue",
 	"./Dashboard/Users/Edit": "./resources/js/Pages/Dashboard/Users/Edit.vue",
@@ -55579,6 +55887,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_template_id_23386ca3___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_template_id_23386ca3___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Dashboard/Logs.vue":
+/*!***********************************************!*\
+  !*** ./resources/js/Pages/Dashboard/Logs.vue ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Logs_vue_vue_type_template_id_22118d53___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Logs.vue?vue&type=template&id=22118d53& */ "./resources/js/Pages/Dashboard/Logs.vue?vue&type=template&id=22118d53&");
+/* harmony import */ var _Logs_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Logs.vue?vue&type=script&lang=js& */ "./resources/js/Pages/Dashboard/Logs.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Logs_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Logs_vue_vue_type_template_id_22118d53___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Logs_vue_vue_type_template_id_22118d53___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/Pages/Dashboard/Logs.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Dashboard/Logs.vue?vue&type=script&lang=js&":
+/*!************************************************************************!*\
+  !*** ./resources/js/Pages/Dashboard/Logs.vue?vue&type=script&lang=js& ***!
+  \************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Logs_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Logs.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Pages/Dashboard/Logs.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Logs_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Dashboard/Logs.vue?vue&type=template&id=22118d53&":
+/*!******************************************************************************!*\
+  !*** ./resources/js/Pages/Dashboard/Logs.vue?vue&type=template&id=22118d53& ***!
+  \******************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Logs_vue_vue_type_template_id_22118d53___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Logs.vue?vue&type=template&id=22118d53& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Pages/Dashboard/Logs.vue?vue&type=template&id=22118d53&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Logs_vue_vue_type_template_id_22118d53___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Logs_vue_vue_type_template_id_22118d53___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

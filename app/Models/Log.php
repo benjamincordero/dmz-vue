@@ -11,11 +11,12 @@ class Log extends Model
 
     protected $fillable = [
         'user_id',
-        'parent_id',
         'action',
-        'message'
     ];
-
+    public function scopeSearch($query, $search)
+    {
+        return $query->where('action', 'like', "%$search%");
+    }
 
     public function user()
     {

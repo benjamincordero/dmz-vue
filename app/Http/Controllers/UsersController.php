@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Exception;
 
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -13,7 +12,9 @@ use Inertia\Inertia;
 
 class UsersController extends Controller
 {
-
+    public function __construct(){
+        $this->middleware('logs', ['except'=>['index', 'edit', 'create']]);
+    }
     public function index()
     {
         $users = User::orderBy('id', 'DESC')->paginate(5)->onEachSide(1);
@@ -39,12 +40,13 @@ class UsersController extends Controller
         $data['password'] = Hash::make($data['password']);
 
         User::create($data);
+
         return Redirect::route('users.index');
     }
 
-
     public function edit(User $user)
     {
+
         return Inertia::render('Dashboard/Users/Edit', ['user' => $user, 'url' => route('users.update', $user)]);
     }
 
@@ -65,6 +67,7 @@ class UsersController extends Controller
         }
 
         $user->update($data);
+
         return Redirect::route('users.index');
 
     }
