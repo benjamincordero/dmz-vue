@@ -42,11 +42,14 @@
 
 <script>
 export default {
-  props: {
-    links: Array,
-    items: {},
-  },
-  methods:{
+    props: {
+        links: Array,
+        items: {
+            prev_page_url:'#',
+            next_page_url:'#'
+        },
+    },
+    methods:{
         linkLabel : (link_label) => {
             if(link_label == 'Next'){
                 return "Siguiente";
@@ -56,8 +59,15 @@ export default {
 
             return link_label;
         }
-  }
 
-
+    },
+    created(){
+        if(!this.items.prev_page_url){
+            this.items.prev_page_url = '#';
+        }
+        if(!this.items.next_page_url){
+            this.items.next_page_url = '#';
+        }
+    }
 }
 </script>

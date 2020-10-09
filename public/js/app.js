@@ -12564,6 +12564,122 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -12661,29 +12777,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ["showingNavigationDropdown"],
+  props: ['showingNavigationDropdown'],
   components: {
     NavLink: _components_NavLink__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  data: function data() {
+    return {
+      dropdownOpen: false
+    };
   }
 });
 
@@ -12763,27 +12866,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['showingNavigationDropdown'],
   components: {
     ResponsiveNavLink: _components_ResponsiveNavLink__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   data: function data() {
     return {
-      showingNavigationDropdown: false,
       dropdownOpen: false
     };
   },
@@ -15396,7 +15486,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     links: Array,
-    items: {}
+    items: {
+      prev_page_url: '#',
+      next_page_url: '#'
+    }
   },
   methods: {
     linkLabel: function linkLabel(link_label) {
@@ -15407,6 +15500,15 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       return link_label;
+    }
+  },
+  created: function created() {
+    if (!this.items.prev_page_url) {
+      this.items.prev_page_url = '#';
+    }
+
+    if (!this.items.next_page_url) {
+      this.items.next_page_url = '#';
     }
   }
 });
@@ -36948,71 +37050,307 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    {
-      staticClass: "flex h-screen bg-gray-200",
-      attrs: { "x-data": "{ showingNavigationDropdown: false }" }
-    },
-    [
-      _c("div", {
-        staticClass:
-          "fixed z-20 inset-0 bg-black opacity-50 transition-opacity lg:hidden",
-        class: _vm.showingNavigationDropdown ? "block" : "hidden",
-        on: {
-          click: function($event) {
-            _vm.showingNavigationDropdown = false
-          }
+  return _c("div", { staticClass: "flex h-screen bg-gray-200" }, [
+    _c("div", {
+      staticClass:
+        "fixed z-20 inset-0 bg-black opacity-50 transition-opacity lg:hidden",
+      class: _vm.showingNavigationDropdown ? "block" : "hidden",
+      on: {
+        click: function($event) {
+          _vm.showingNavigationDropdown = !_vm.showingNavigationDropdown
         }
-      }),
-      _vm._v(" "),
-      _c("Sidebar", {
-        attrs: { showingNavigationDropdown: _vm.showingNavigationDropdown }
-      }),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "flex-1 flex flex-col overflow-hidden" },
-        [
-          _c("Topbar", {
-            attrs: {
-              showingNavigationDropdown: _vm.showingNavigationDropdown,
-              dropdownOpen: _vm.dropdownOpen
-            }
-          }),
-          _vm._v(" "),
+      }
+    }),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass:
+          "fixed z-30 inset-y-0 left-0 w-64 transition duration-300 transform bg-gray-900 overflow-y-auto lg:translate-x-0 lg:static lg:inset-0",
+        class: _vm.showingNavigationDropdown
+          ? "translate-x-0 ease-out"
+          : "-translate-x-full ease-in"
+      },
+      [
+        _c("div", { staticClass: "flex items-center justify-center mt-8" }, [
           _c(
-            "main",
+            "div",
             {
-              staticClass:
-                "flex-1 overflow-x-hidden overflow-y-auto bg-gray-200 main"
+              staticClass: "flex flex-col items-center",
+              on: {
+                click: function($event) {
+                  _vm.showingNavigationDropdown = true
+                }
+              }
             },
             [
+              _c("img", {
+                staticClass: "h-full w-1/3 object-cover rounded-full",
+                attrs: {
+                  src: _vm.$page.user.profile_photo_url,
+                  alt: _vm.$page.user.name
+                }
+              }),
+              _vm._v(" "),
               _c(
-                "div",
-                { staticClass: "container mx-auto px-1 md:px-6 py-8" },
-                [
-                  _c(
-                    "main",
-                    [
-                      _vm._t("default"),
-                      _vm._v(" "),
-                      _c("portal-target", {
-                        attrs: { name: "modal", multiple: "" }
-                      })
-                    ],
-                    2
-                  )
-                ]
+                "span",
+                { staticClass: "text-white text-2xl mt-2 font-semibold" },
+                [_vm._v(_vm._s(_vm.$page.user.name))]
               )
             ]
           )
-        ],
-        1
+        ]),
+        _vm._v(" "),
+        _c(
+          "nav",
+          { staticClass: "mt-6" },
+          [
+            _c(
+              "nav-link",
+              {
+                attrs: {
+                  href: "/dashboard",
+                  active: _vm.$page.currentRouteName == "dashboard"
+                }
+              },
+              [
+                _c("font-awesome-icon", { attrs: { icon: "tachometer-alt" } }),
+                _vm._v(" "),
+                _c("span", { staticClass: "mx-3" }, [_vm._v("Dashboard")])
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "nav-link",
+              {
+                attrs: {
+                  href: "/dashboard/categories",
+                  active: _vm.$page.currentRouteName == "categories.index"
+                }
+              },
+              [
+                _c("font-awesome-icon", { attrs: { icon: "bookmark" } }),
+                _vm._v(" "),
+                _c("span", { staticClass: "mx-3" }, [_vm._v("Categorias")])
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "nav-link",
+              {
+                attrs: {
+                  href: _vm.$route("logs"),
+                  active: _vm.$page.currentRouteName == "logs"
+                }
+              },
+              [
+                _c("font-awesome-icon", { attrs: { icon: "list-alt" } }),
+                _vm._v(" "),
+                _c("span", { staticClass: "mx-3" }, [_vm._v("Logs")])
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "nav-link",
+              {
+                attrs: {
+                  href: "/dashboard/users",
+                  active: _vm.$page.currentRouteName == "users.index"
+                }
+              },
+              [
+                _c("font-awesome-icon", { attrs: { icon: "users" } }),
+                _vm._v(" "),
+                _c("span", { staticClass: "mx-3" }, [_vm._v("Usuarios")])
+              ],
+              1
+            )
+          ],
+          1
+        )
+      ]
+    ),
+    _vm._v(" "),
+    _c("div", { staticClass: "flex-1 flex flex-col overflow-hidden" }, [
+      _c(
+        "header",
+        {
+          staticClass:
+            "flex justify-between items-center py-4 px-6 bg-white border-b-2 border-gray-400"
+        },
+        [
+          _c("div", { staticClass: "flex items-center" }, [
+            _c(
+              "button",
+              {
+                staticClass: "text-gray-500 focus:outline-none lg:hidden",
+                on: {
+                  click: function($event) {
+                    _vm.showingNavigationDropdown = true
+                  }
+                }
+              },
+              [
+                _c(
+                  "svg",
+                  {
+                    staticClass: "h-6 w-6",
+                    attrs: {
+                      viewBox: "0 0 24 24",
+                      fill: "none",
+                      xmlns: "http://www.w3.org/2000/svg"
+                    }
+                  },
+                  [
+                    _c("path", {
+                      attrs: {
+                        d: "M4 6H20M4 12H20M4 18H11",
+                        stroke: "currentColor",
+                        "stroke-width": "2",
+                        "stroke-linecap": "round",
+                        "stroke-linejoin": "round"
+                      }
+                    })
+                  ]
+                )
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "flex items-center" }, [
+            _c("div", { staticClass: "relative" }, [
+              _c(
+                "button",
+                {
+                  staticClass:
+                    "relative block h-8 w-8 rounded-full overflow-hidden shadow focus:outline-none",
+                  on: {
+                    click: function($event) {
+                      _vm.dropdownOpen = !_vm.dropdownOpen
+                    }
+                  }
+                },
+                [
+                  _c("img", {
+                    staticClass: "h-full w-full object-cover",
+                    attrs: {
+                      src: _vm.$page.user.profile_photo_url,
+                      alt: _vm.$page.user.name
+                    }
+                  })
+                ]
+              ),
+              _vm._v(" "),
+              _c("div", {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.dropdownOpen,
+                    expression: "dropdownOpen"
+                  }
+                ],
+                staticClass: "fixed inset-0 h-full w-full z-10",
+                staticStyle: { display: "none" },
+                on: {
+                  click: function($event) {
+                    _vm.dropdownOpen = false
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.dropdownOpen,
+                      expression: "dropdownOpen"
+                    }
+                  ],
+                  staticClass:
+                    "absolute right-0 mt-2 w-48 bg-white rounded-md overflow-hidden shadow-xl z-10",
+                  staticStyle: { display: "none" }
+                },
+                [
+                  _c(
+                    "responsive-nav-link",
+                    {
+                      attrs: {
+                        href: "/user/profile",
+                        active: _vm.$page.currentRouteName == "profile.show"
+                      }
+                    },
+                    [_vm._v("\n            Profile\n          ")]
+                  ),
+                  _vm._v(" "),
+                  _vm.$page.jetstream.hasApiFeatures
+                    ? _c(
+                        "responsive-nav-link",
+                        {
+                          attrs: {
+                            href: "/user/api-tokens",
+                            active:
+                              _vm.$page.currentRouteName == "api-tokens.index"
+                          }
+                        },
+                        [_vm._v("\n            API Tokens\n          ")]
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _c(
+                    "form",
+                    {
+                      attrs: { method: "POST" },
+                      on: {
+                        submit: function($event) {
+                          $event.preventDefault()
+                          return _vm.logout($event)
+                        }
+                      }
+                    },
+                    [
+                      _c("responsive-nav-link", { attrs: { as: "button" } }, [
+                        _vm._v(" Salir ")
+                      ])
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ])
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "main",
+        {
+          staticClass:
+            "flex-1 overflow-x-hidden overflow-y-auto bg-gray-200 main"
+        },
+        [
+          _c("div", { staticClass: "container mx-auto px-1 md:px-6 py-8" }, [
+            _c(
+              "main",
+              [
+                _vm._t("default"),
+                _vm._v(" "),
+                _c("portal-target", { attrs: { name: "modal", multiple: "" } })
+              ],
+              2
+            )
+          ])
+        ]
       )
-    ],
-    1
-  )
+    ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -37047,46 +37385,32 @@ var render = function() {
     },
     [
       _c("div", { staticClass: "flex items-center justify-center mt-8" }, [
-        _c("div", { staticClass: "flex items-center" }, [
-          _c(
-            "svg",
-            {
-              staticClass: "h-12 w-12",
-              attrs: {
-                viewBox: "0 0 512 512",
-                fill: "none",
-                xmlns: "http://www.w3.org/2000/svg"
+        _c(
+          "div",
+          {
+            staticClass: "flex items-center",
+            on: {
+              click: function($event) {
+                _vm.showingNavigationDropdown = true
               }
-            },
-            [
-              _c("path", {
-                attrs: {
-                  d:
-                    "M364.61 390.213C304.625 450.196 207.37 450.196 147.386 390.213C117.394 360.22 102.398 320.911 102.398 281.6C102.398 242.291 117.394 202.981 147.386 172.989C147.386 230.4 153.6 281.6 230.4 307.2C230.4 256 256 102.4 294.4 76.7999C320 128 334.618 142.997 364.608 172.989C394.601 202.981 409.597 242.291 409.597 281.6C409.597 320.911 394.601 360.22 364.61 390.213Z",
-                  fill: "#4C51BF",
-                  stroke: "#4C51BF",
-                  "stroke-width": "2",
-                  "stroke-linecap": "round",
-                  "stroke-linejoin": "round"
-                }
-              }),
-              _vm._v(" "),
-              _c("path", {
-                attrs: {
-                  d:
-                    "M201.694 387.105C231.686 417.098 280.312 417.098 310.305 387.105C325.301 372.109 332.8 352.456 332.8 332.8C332.8 313.144 325.301 293.491 310.305 278.495C295.309 263.498 288 256 275.2 230.4C256 243.2 243.201 320 243.201 345.6C201.694 345.6 179.2 332.8 179.2 332.8C179.2 352.456 186.698 372.109 201.694 387.105Z",
-                  fill: "white"
-                }
-              })
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "span",
-            { staticClass: "text-white text-2xl mx-2 font-semibold" },
-            [_vm._v("Dashboard")]
-          )
-        ])
+            }
+          },
+          [
+            _c("img", {
+              staticClass: "h-full w-full object-cover",
+              attrs: {
+                src: _vm.$page.user.profile_photo_url,
+                alt: _vm.$page.user.name
+              }
+            }),
+            _vm._v(" "),
+            _c(
+              "span",
+              { staticClass: "text-white text-2xl mx-2 font-semibold" },
+              [_vm._v("Dashboard")]
+            )
+          ]
+        )
       ]),
       _vm._v(" "),
       _c(
@@ -37192,41 +37516,14 @@ var render = function() {
     },
     [
       _c("div", { staticClass: "flex items-center" }, [
-        _c(
-          "button",
-          {
-            staticClass: "text-gray-500 focus:outline-none lg:hidden",
-            on: {
-              click: function($event) {
-                _vm.showingNavigationDropdown = true
-              }
+        _c("button", {
+          staticClass: "text-gray-500 focus:outline-none lg:hidden",
+          on: {
+            click: function($event) {
+              _vm.showingNavigationDropdown = true
             }
-          },
-          [
-            _c(
-              "svg",
-              {
-                staticClass: "h-6 w-6",
-                attrs: {
-                  viewBox: "0 0 24 24",
-                  fill: "none",
-                  xmlns: "http://www.w3.org/2000/svg"
-                }
-              },
-              [
-                _c("path", {
-                  attrs: {
-                    d: "M4 6H20M4 12H20M4 18H11",
-                    stroke: "currentColor",
-                    "stroke-width": "2",
-                    "stroke-linecap": "round",
-                    "stroke-linejoin": "round"
-                  }
-                })
-              ]
-            )
-          ]
-        )
+          }
+        })
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "flex items-center" }, [
