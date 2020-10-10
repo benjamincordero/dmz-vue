@@ -58620,8 +58620,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/benjamin/WebApps/laravel8_docker/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/benjamin/WebApps/laravel8_docker/resources/css/app.css */"./resources/css/app.css");
+__webpack_require__(/*! /home/benjamin/WebApps/template-laravel8-inertiavue/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/benjamin/WebApps/template-laravel8-inertiavue/resources/css/app.css */"./resources/css/app.css");
 
 
 /***/ })
