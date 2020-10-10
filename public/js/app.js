@@ -13541,6 +13541,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -38939,6 +38945,19 @@ var render = function() {
                                       "\n                      Ruta\n                    "
                                     )
                                   ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "th",
+                                  {
+                                    staticClass:
+                                      "px-6 font-bold py-2 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                          Fecha\n                      "
+                                    )
+                                  ]
                                 )
                               ])
                             ]),
@@ -38981,6 +39000,21 @@ var render = function() {
                                       _vm._v(
                                         "\n                      " +
                                           _vm._s(log.action) +
+                                          "\n                    "
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "td",
+                                    {
+                                      staticClass:
+                                        "px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500"
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                      " +
+                                          _vm._s(log.created_at) +
                                           "\n                    "
                                       )
                                     ]
@@ -40803,12 +40837,12 @@ var render = function() {
                             expression: "! photoPreview"
                           }
                         ],
-                        staticClass: "mx-2"
+                        staticClass: "mx-2 flex"
                       },
                       [
                         _c("img", {
                           staticClass:
-                            "rounded-full h-20 w-20 object-cover mx-auto",
+                            "rounded-full justify-around h-20 w-20 object-cover mx-auto",
                           attrs: {
                             src: _vm.$page.user.profile_photo_url,
                             alt: "Current Profile Photo"
@@ -40828,7 +40862,7 @@ var render = function() {
                             expression: "photoPreview"
                           }
                         ],
-                        staticClass: "mt-2"
+                        staticClass: "mt-2 flex  justify-around"
                       },
                       [
                         _c("span", {

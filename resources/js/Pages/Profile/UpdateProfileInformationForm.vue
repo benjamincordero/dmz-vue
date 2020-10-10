@@ -19,12 +19,12 @@
                 <label for="photo" value="Photo" />
 
                 <!-- Current Profile Photo -->
-                <div class="mx-2" v-show="! photoPreview">
-                    <img :src="$page.user.profile_photo_url" alt="Current Profile Photo" class="rounded-full h-20 w-20 object-cover mx-auto">
+                <div class="mx-2 flex" v-show="! photoPreview">
+                    <img :src="$page.user.profile_photo_url" alt="Current Profile Photo" class="rounded-full justify-around h-20 w-20 object-cover mx-auto">
                 </div>
 
                 <!-- New Profile Photo Preview -->
-                <div class="mt-2" v-show="photoPreview">
+                <div class="mt-2 flex  justify-around" v-show="photoPreview">
                     <span class="block rounded-full w-20 h-20"
                           :style="'background-size: cover; background-repeat: no-repeat; background-position: center center; background-image: url(\'' + photoPreview + '\');'">
                     </span>
