@@ -1,10 +1,20 @@
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
-            <x-jet-authentication-card-logo />
+            <img class="w-3/4 mx-auto" src="{{ asset('assets/images/logos/demo.png') }}" alt="{{env('APP_NAME')}}">
         </x-slot>
 
-        <x-jet-validation-errors class="mb-4" />
+        @if ($errors->any())
+            <div class="my-4">
+                <div class="font-medium text-red-600">Algo ha salido mal</div>
+
+                <ul class="mt-3 list-disc list-inside text-sm text-red-600">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
 
         <form method="POST" action="{{ route('register') }}">
             @csrf
@@ -31,7 +41,7 @@
 
             <div class="flex items-center justify-end mt-4">
                 <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
+                    Ya esta registrado
                 </a>
 
                 <x-jet-button class="ml-4">
