@@ -31,15 +31,6 @@
           <span class="mx-3">Dashboard</span>
         </nav-link>
 
-        <nav-link
-          href="/dashboard/categories"
-          :active="$page.currentRouteName == 'categories.index'"
-        >
-          <font-awesome-icon icon="bookmark" />
-
-          <span class="mx-3">Categorias</span>
-        </nav-link>
-
         <nav-link :href="$route('logs')" :active="$page.currentRouteName == 'logs'">
           <font-awesome-icon icon="list-alt" />
 
@@ -111,15 +102,7 @@
               href="/user/profile"
               :active="$page.currentRouteName == 'profile.show'"
             >
-              Profile
-            </responsive-nav-link>
-
-            <responsive-nav-link
-              href="/user/api-tokens"
-              :active="$page.currentRouteName == 'api-tokens.index'"
-              v-if="$page.jetstream.hasApiFeatures"
-            >
-              API Tokens
+              Perfil
             </responsive-nav-link>
 
             <!-- Authentication -->

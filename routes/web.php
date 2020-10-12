@@ -12,7 +12,6 @@ Route::middleware(['auth:sanctum', 'verified', 'banned_users'])->get('/dashboard
 
 Route::prefix('dashboard')->middleware(['auth', 'banned_users'])->group(function(){
 
-    Route::resource('categories', 'CategoriesController');
     Route::resource('users', 'UsersController');
     Route::put('users/change_status/{user}', 'UsersController@changeStatus')->name('users.change_status');
 

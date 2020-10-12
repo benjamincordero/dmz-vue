@@ -41,7 +41,8 @@
                 </label>
             </div>
 
-            <div class="flex items-center justify-end mt-4">
+            <div class="flex items-center justify-between mt-4">
+                <a href="/register" class="underline text-sm text-gray-600 hover:text-gray-900" >Registro</a>
                 @if (Route::has('password.request'))
                     <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
                         ¿Olvido su contraseña?
