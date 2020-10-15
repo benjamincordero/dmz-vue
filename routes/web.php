@@ -16,4 +16,9 @@ Route::prefix('dashboard')->middleware(['auth', 'banned_users'])->group(function
     Route::put('users/change_status/{user}', 'UsersController@changeStatus')->name('users.change_status');
 
     Route::get('logs', 'LogsController@index')->name('logs');
+
+    Route::resource('diezmos', 'TithesController', ['except' => ['show']]);
+    Route::post('diezmos/completar', 'TithesController@complete')->name('diezmos.complete');
+
+    Route::resource('transferencias', 'TransfersController', ['except' => ['create', 'store', 'edit', 'update']]);
 });

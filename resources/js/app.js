@@ -10,6 +10,8 @@ import 'vue-md-icons/lib/vue-md-icons.js';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import VueSweetalert2 from 'vue-sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css';
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
@@ -18,6 +20,7 @@ library.add(fas)
 Vue.use(InertiaApp);
 Vue.use(InertiaForm);
 Vue.use(PortalVue);
+Vue.use(VueSweetalert2);
 
 Vue.prototype.$route = (...args) => route(...args).url();
 

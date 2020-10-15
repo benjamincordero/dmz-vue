@@ -30,11 +30,21 @@
           <font-awesome-icon icon="tachometer-alt" />
           <span class="mx-3">Dashboard</span>
         </nav-link>
+        <nav-link
+          :href="$route('diezmos.index')"
+          :active="$page.currentRouteName == 'diezmos.index'"
+        >
+          <font-awesome-icon icon="money-check" />
 
-        <nav-link :href="$route('logs')" :active="$page.currentRouteName == 'logs'">
-          <font-awesome-icon icon="list-alt" />
+          <span class="mx-3">Diezmos</span>
+        </nav-link>
+        <nav-link
+          :href="$route('transferencias.index')"
+          :active="$page.currentRouteName == 'transferencias.index'"
+        >
+          <font-awesome-icon icon="paper-plane" />
 
-          <span class="mx-3">Logs</span>
+          <span class="mx-3">Transferencias</span>
         </nav-link>
 
         <nav-link
@@ -44,6 +54,11 @@
           <font-awesome-icon icon="users" />
 
           <span class="mx-3">Usuarios</span>
+        </nav-link>
+        <nav-link :href="$route('logs')" :active="$page.currentRouteName == 'logs'">
+          <font-awesome-icon icon="list-alt" />
+
+          <span class="mx-3">Logs</span>
         </nav-link>
       </nav>
     </div>
@@ -163,5 +178,13 @@ export default {
       return window.location.pathname;
     },
   },
+    methods: {
+        logout() {
+            axios.post("/logout").then((response) => {
+                window.location = "/";
+            });
+        },
+    }
+
 };
 </script>

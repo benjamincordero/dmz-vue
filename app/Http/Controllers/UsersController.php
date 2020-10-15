@@ -74,7 +74,6 @@ class UsersController extends Controller
 
     public function changeStatus(Request $request, User $user)
     {
-
         $user->update(['status'=>$request->status]);
         return $request->wantsJson()
             ? new JsonResponse('', 200)

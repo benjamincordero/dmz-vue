@@ -1,16 +1,16 @@
 version: "3.1"
 services:
   #PHP Service
-  app-template:
+  app-dmz:
     build:
       context: .
       dockerfile: Dockerfile
     image: php:7.4-fpm-alpine
-    container_name: app-template
+    container_name: app-dmz
     restart: unless-stopped
     tty: true
     environment:
-      SERVICE_NAME: app-template
+      SERVICE_NAME: app-dmz
       SERVICE_TAGS: dev
     working_dir: /var/www
     volumes:
@@ -20,9 +20,9 @@ services:
       - app-network
 
   #Nginx Service
-  webserver-template:
+  webserver-dmz:
     image: nginx:alpine
-    container_name: webserver-template
+    container_name: webserver-dmz
     restart: unless-stopped
     tty: true
     ports:
@@ -34,24 +34,24 @@ services:
       - app-network
 
   #MySQL Service
-  database-template:
+  database-dmz:
     image: mysql:5.7
     command: --default-authentication-plugin=mysql_native_password
-    container_name: database-template
+    container_name: database-dmz
     restart: always
     tty: true
     ports:
       - "3307:3306"
     environment:
-      MYSQL_DATABASE: template
+      MYSQL_DATABASE: dmz
       MYSQL_ROOT_PASSWORD: password
     volumes:
       - ./.docker/dbdata:/var/lib/mysql
       - ./.docker/mysql/my.cnf:/etc/mysql/my.cnf
     networks:
       - app-network
-  adminer-template:
-    container_name: adminer-template
+  adminer-dmz:
+    container_name: adminer-dmz
     image: adminer
     restart: always
     ports:
