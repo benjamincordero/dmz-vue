@@ -107,7 +107,7 @@ export default {
   },
    computed: {
     total: function () {
-      return this.details.reduce((i, current) => i + current.amount, 0);
+      return this.details.reduce((i, current) => parseFloat(i) + parseFloat(current.amount), 0);
     },
 
   },

@@ -1,17 +1,18 @@
 <template>
   <AppLayout>
     <div class="bg-white shadow overflow-hidden sm:rounded-lg">
-      <div class="text-center px-4 py-5 border-b border-gray-200 sm:px-6 bg-blue-600">
-        <h3 class="text-white  text-lg leading-6 font-medium ">
-          <font-awesome-icon icon="sync"></font-awesome-icon>&nbsp;Editar Diezmo
+      <div class="px-4 py-5 border-b border-gray-200 bg-teal-600 sm:px-6">
+        <h3 class="text-lg leading-6 font-medium text-white">
+          <font-awesome-icon icon="hand-holding-usd"></font-awesome-icon>&nbsp;Añadir
+          Ofrenda
         </h3>
       </div>
         <div class="bg-gray-50 px-4 py-2 sm:px-6">
             <form @submit.prevent="submit">
                 <Form :form="form"/>
                 <div class="px-4 py-2 border-t border-gray-200 sm:px-6 text-right">
-                    <button type="submit" class="py-2 px-4 bg-green-500 hover:bg-green-600 text-white rounded-sm">
-                        <font-awesome-icon icon="sync-alt"></font-awesome-icon>&nbsp; Actualizar
+                    <button type="submit" class="py-2 px-4 bg-indigo-600 hover:bg-indigo-400 text-white rounded">
+                        <font-awesome-icon icon="check"></font-awesome-icon>&nbsp; Guardar
                     </button>
                 </div>
             </form>
@@ -25,7 +26,6 @@
     import Form from './Form';
 
     export default {
-        props:['tithe'],
         components: {
             AppLayout,
             Form,
@@ -33,19 +33,18 @@
         data() {
             return {
                 form:this.$inertia.form({
-                    person:this.tithe.person,
-                    amount:this.tithe.amount,
-                    currency:this.tithe.currency
+                    person:'',
+                    amount:0,
+                    currency:'',
+                    type_id:''
                 }),
             };
         },
         methods:{
             submit(){
-                this.$inertia.put(route('diezmos.update', this.tithe.id), this.form);
+
+                this.$inertia.post(route('ofrendas.store'), this.form);
             }
-        },
-        created(){
-          //  console.log(this.tithe)
         }
     };
 </script>

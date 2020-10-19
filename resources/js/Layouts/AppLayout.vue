@@ -24,7 +24,7 @@
 
       <nav class="mt-6">
         <nav-link
-          href="/dashboard"
+          :href="$route('dashboard')"
           :active="$page.currentRouteName == 'dashboard'"
         >
           <font-awesome-icon icon="tachometer-alt" />
@@ -39,6 +39,15 @@
           <span class="mx-3">Diezmos</span>
         </nav-link>
         <nav-link
+          :href="$route('ofrendas.index')"
+          :active="$page.currentRouteName == 'ofrendas.index'"
+        >
+          <font-awesome-icon icon="hand-holding-usd" />
+
+          <span class="mx-3">Ofrendas</span>
+        </nav-link>
+
+        <nav-link
           :href="$route('transferencias.index')"
           :active="$page.currentRouteName == 'transferencias.index'"
         >
@@ -48,7 +57,7 @@
         </nav-link>
 
         <nav-link
-          href="/dashboard/users"
+          :href="$route('users.index')"
           :active="$page.currentRouteName == 'users.index'"
         >
           <font-awesome-icon icon="users" />

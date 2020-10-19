@@ -8,9 +8,6 @@ WORKDIR /application
 
 USER root
 
-RUN alias art='php artisan serve'
-
-
 # Install Additional dependencies
 RUN apk update && apk add --no-cache \
     build-base shadow vim curl \
@@ -21,6 +18,7 @@ RUN apk update && apk add --no-cache \
     php7-pdo_mysql \
     php7-mysqli \
     php7-mcrypt \
+    php7-pgsql \
     php7-mbstring \
     php7-xml \
     php7-openssl \
@@ -45,6 +43,10 @@ RUN docker-php-ext-install pdo pdo_mysql mysqli
 RUN docker-php-ext-enable pdo_mysql
 RUN docker-php-ext-install gd
 RUN docker-php-ext-install xml
+
+RUN set -ex && apk --no-cache add postgresql-dev
+RUN docker-php-ext-install pdo pdo_pgsql
+RUN docker-php-ext-enable pdo_pgsql
 
 RUN docker-php-ext-configure zip
 RUN docker-php-ext-install zip

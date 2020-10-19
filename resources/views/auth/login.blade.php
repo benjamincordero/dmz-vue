@@ -1,7 +1,7 @@
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
-            <img class="w-3/4 mx-auto" src="{{ asset('assets/images/logos/demo.png') }}" alt="{{env('APP_NAME')}}">
+            <img class="w-3/4 mx-auto" src="{{ asset('assets/images/logos/icon.svg') }}" alt="{{env('APP_NAME')}}">
         </x-slot>
 
         @if ($errors->any())
@@ -41,15 +41,17 @@
                 </label>
             </div>
 
-            <div class="flex items-center justify-between mt-4">
-                <a href="/register" class="underline text-sm text-gray-600 hover:text-gray-900" >Registro</a>
-                @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
-                        ¿Olvido su contraseña?
-                    </a>
-                @endif
-
-                <x-jet-button class="ml-4">
+            <div class="flex justify-between mt-4">
+              <div></div>
+              {{--
+                  <a href="/register" class="underline text-sm text-gray-600 hover:text-gray-900" >Registro</a>
+                  @if (Route::has('password.request'))
+                      <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
+                          ¿Olvido su contraseña?
+                      </a>
+                  @endif
+                --}}
+                <x-jet-button class="ml-4 w-block">
                     {{ __('Login') }}
                 </x-jet-button>
             </div>

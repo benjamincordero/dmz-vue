@@ -1,12 +1,12 @@
 <template>
   <AppLayout>
     <div class="bg-white shadow overflow-hidden sm:rounded-lg">
-      <div class="px-4 py-5 border-b border-gray-200 sm:px-6 bg-blue-600">
+      <div class="px-4 py-5 border-b border-gray-200 sm:px-6 bg-teal-600">
         <h3
           class="text-lg text-white text-center font-bold leading-6 font-medium"
         >
-          <font-awesome-icon icon="money-check"></font-awesome-icon
-          >&nbsp;Diezmos Actuales
+          <font-awesome-icon icon="hand-holding-usd"></font-awesome-icon
+          >&nbsp;Ofrendas Actuales
         </h3>
       </div>
       <div class="bg-gray-50 px-4 sm:px-6">
@@ -27,19 +27,20 @@
                       >
                         Monto
                       </th>
-                      <th
-                        class="font-bold px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
-                      >
-                        Diezmo
-                      </th>
+
                       <th
                         class="font-bold px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
                       >
                         Fecha
                       </th>
+                      <th
+                        class="font-bold px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
+                      >
+                        Tipo
+                      </th>
                       <th class="font-bold px-6 py-3 bg-gray-50 text-center">
                         <inertia-link
-                          :href="$route('diezmos.create')"
+                          :href="$route('ofrendas.create')"
                           class="bg-blue-600 hover:bg-blue-700 text-white py-1 px-3 rounded-sm"
                         >
                           <font-awesome-icon icon="plus"></font-awesome-icon>
@@ -48,43 +49,38 @@
                     </tr>
                   </thead>
                   <tbody class="bg-white divide-y divide-gray-200">
-                    <tr v-for="tithe in tithes" :key="tithe.id">
+                    <tr v-for="offering in offerings" :key="offering.id">
                       <td class="px-6 text-gray-700 py-4 whitespace-no-wrap">
-                        {{ tithe.person }}
+                        {{ offering.person }}
                       </td>
                       <td class="px-6 text-gray-700 py-4 whitespace-no-wrap">
                         {{
-                          parseFloat(tithe.amount).toLocaleString("us", {
+                          parseFloat(offering.amount).toLocaleString("us", {
                             minimumFractionDigits: 2,
                             maximumFractionDigits: 2,
                           })
                         }}
-                        {{ tithe.currency }}
+                        {{ offering.currency }}
                       </td>
-                      <td class="px-6 text-gray-700 py-4 whitespace-no-wrap">
-                        {{
-                          parseFloat(tithe.tithe).toLocaleString("us", {
-                            minimumFractionDigits: 2,
-                            maximumFractionDigits: 2,
-                          })
-                        }}
 
-                        {{ tithe.currency }}
-                      </td>
                       <td class="px-6 text-gray-700 py-4 whitespace-no-wrap">
-                        {{ tithe.date }}
+                        {{ offering.date }}
+                      </td>
+
+                      <td class="px-6 text-gray-700 py-4 whitespace-no-wrap">
+                        {{ offering.type.name }}
                       </td>
                       <td
                         class="px-6 text-gray-700 py-4 whitespace-no-wrap text-center"
                       >
                         <inertia-link
-                          :href="$route('diezmos.edit', tithe.id)"
+                          :href="$route('ofrendas.edit', offering.id)"
                           class="bg-green-400 hover:bg-green-500 text-white py-1 px-3 rounded-sm"
                         >
                           <font-awesome-icon icon="pen"></font-awesome-icon>
                         </inertia-link>
                         <button
-                          @click="deleteTithe(tithe.id)"
+                          @click="deleteOffering(offering.id)"
                           class="bg-red-500 hover:bg-red-600 text-right text-white py-1 px-3 rounded-sm"
                         >
                           <font-awesome-icon icon="times"></font-awesome-icon>
@@ -96,7 +92,7 @@
                     <td
                       class="px-6 font-bold text-gray-800 py-4 whitespace-no-wrap"
                     >
-                      Totales:
+                      Total:
                     </td>
                     <td
                       class="px-6 font-bold text-gray-800 py-4 whitespace-no-wrap"
@@ -108,21 +104,12 @@
                         })
                       }}
                     </td>
-                    <td
-                      class="px-6 font-bold text-gray-800 py-4 whitespace-no-wrap"
-                    >
-                      {{
-                        parseFloat(total_tithe).toLocaleString("us", {
-                          minimumFractionDigits: 2,
-                          maximumFractionDigits: 2,
-                        })
-                      }}
-                    </td>
+
                     <td
                       class="px-6 font-bold text-gray-800 py-4 whitespace-no-wrap"
                     >
                       <button
-                        v-show="total_tithe > 0"
+                        v-show="total > 0"
                         @click="openModalComplete"
                         class="bg-blue-600 hover:bg-blue-700 text-right text-white py-1 px-3 rounded-sm"
                       >
@@ -141,6 +128,7 @@
         </div>
       </div>
     </div>
+
     <dialog-modal
       :show="confirmingComplete"
       @close="confirmingComplete = false"
@@ -152,21 +140,32 @@
       </template>
 
       <template #content>
-          <div class="flex justify-around">
-            <div class="mt-4 w-2/4">
-                <Input
-                    type="number"
-                    class="mt-1 block w-full"
-                    placeholder="Taza del Dia"
-                    ref="rate"
-                    v-model="form.rate"
-                    @keyup.enter.native="complete"
-                />
-                    <input-error :message="form.error('rate')" class="mt-2" />
+        <div class="flex justify-around">
+          <div class="mt-4 w-1/2">
+            <Input
+              type="number"
+              class="block w-full mr-1 py-2"
+              placeholder="Taza del Dia"
+              ref="rate"
+              v-model="form.rate"
+              @keyup.enter.native="complete"
+            />
+            <input-error :message="form.error('rate')" class="mt-2" />
           </div>
-
+          <div class="mt-4 w-1/2">
+            <select
+              class="block w-full bg-gray-200 ml-1 border border-gray-200 text-gray-700 px-3 py-2 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              id="grid-state"
+              name="type_id"
+              v-model="form.type_id"
+            >
+              <option value="">Seleccione</option>
+              <option value="1">Carpa</option>
+              <option value="2">Imprenta</option>
+            </select>
+            <input-error :message="form.error('type_id')" class="mt-2" />
+          </div>
         </div>
-
       </template>
 
       <template #footer>
@@ -200,7 +199,7 @@ import InputError from "./../../components/InputError";
 import SecondaryButton from "./../../components/SecondaryButton";
 
 export default {
-  props: ["tithes"],
+  props: ["offerings"],
   components: {
     AppLayout,
     DialogModal,
@@ -213,12 +212,27 @@ export default {
     return {
       form: this.$inertia.form({
         rate: "",
+        type_id:''
       }),
       confirmingComplete: false,
     };
   },
   methods: {
-    deleteTithe(id) {
+    openModalComplete() {
+      this.confirmingComplete = true;
+      setTimeout(() => {
+        this.$refs.rate.focus();
+      }, 250);
+    },
+    async complete() {
+        await this.$inertia.post(route("ofrendas.complete", this.form));
+
+        if (parseFloat(this.form.rate) > 0) {
+            this.confirmingComplete = false;
+        }
+
+    },
+    deleteOffering(id) {
       this.$swal
         .fire({
           title: "Advertencia!",
@@ -230,31 +244,15 @@ export default {
         })
         .then((result) => {
           if (result.value) {
-            this.$inertia.delete(route("diezmos.destroy", id));
+            this.$inertia.delete(route("ofrendas.destroy", id));
           }
         });
     },
-    openModalComplete(){
-        this.confirmingComplete = true;
-        setTimeout(() => {
-            this.$refs.rate.focus()
-        }, 250)
-    },
-    async complete() {
-        await this.$inertia.post(route("diezmos.complete", this.form));
 
-        if (parseFloat(this.form.rate) > 0) {
-            this.confirmingComplete = false;
-        }
-
-    },
   },
   computed: {
     total: function () {
-      return this.tithes.reduce((i, current) => i + current.amount, 0);
-    },
-    total_tithe: function () {
-      return this.tithes.reduce((i, current) => i + current.tithe, 0);
+      return this.offerings.reduce((i, current) => i + current.amount, 0);
     },
   },
 };

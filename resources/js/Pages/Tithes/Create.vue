@@ -1,9 +1,9 @@
 <template>
   <AppLayout>
     <div class="bg-white shadow overflow-hidden sm:rounded-lg">
-      <div class="px-4 py-5 border-b border-gray-200 sm:px-6">
-        <h3 class="text-lg leading-6 font-medium text-gray-600">
-          <font-awesome-icon icon="user-plus"></font-awesome-icon>&nbsp;Añadir
+      <div class="px-4 py-5 border-b border-gray-200 bg-blue-600 sm:px-6">
+        <h3 class="text-lg leading-6 font-medium text-white">
+          <font-awesome-icon icon="money-check"></font-awesome-icon>&nbsp;Añadir
           Diezmo
         </h3>
       </div>

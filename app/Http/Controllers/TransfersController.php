@@ -9,7 +9,9 @@ use Inertia\Inertia;
 
 class TransfersController extends Controller
 {
-
+    public function __construct(){
+        $this->middleware('logs', ['except'=>['index', 'show']]);
+    }
     public function index()
     {
         $tranfers = Transfer::with('type')->orderBy('id', 'DESC')->paginate(5)->onEachSide(1);
@@ -21,7 +23,7 @@ class TransfersController extends Controller
         $transfer = Transfer::find($id);
 
         if ($transfer->type_id) {
-            $details = $transfer->offerings()->with('type')->get();
+            $details = $transfer->offerings()->with(['type', 'transfer'])->get();
         } else {
             $details = $transfer->tithes()->with('transfer')->get();
         }
@@ -32,7 +34,6 @@ class TransfersController extends Controller
     public function destroy($id)
     {
         $transfer = Transfer::find($id);
-
         $transfer->delete();
 
         return Redirect::route('transferencias.index');

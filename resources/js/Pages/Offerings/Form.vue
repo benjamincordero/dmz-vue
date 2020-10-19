@@ -2,7 +2,7 @@
   <div>
     <!-- FormLine -->
     <div class="flex flex-wrap">
-      <div class="w-full lg:w-2/4 p-4">
+      <div class="w-full lg:w-1/4 p-4">
         <label
           class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
           for="grid-first-name"
@@ -52,18 +52,32 @@
         </select>
         <input-error :message="form.error('currency')" class="mt-2"/>
       </div>
+      <div class="w-full lg:w-1/4 p-4">
+        <label
+          class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+          for="grid-first-name"
+        >
+          Tipo
+        </label>
+
+        <select
+          class="block w-full bg-gray-200 border border-gray-200 text-gray-700 px-3 py-2 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+          id="grid-state"
+          name="type_id"
+          v-model="form.type_id"
+        >
+          <option value="">Seleccione</option>
+          <option :value="1">Carpa</option>
+          <option :value="2">Imprenta</option>
+        </select>
+        <input-error :message="form.error('type_id')" class="mt-2"/>
+      </div>
     </div>
-
-
   </div>
-
-
 </template>
 
 <script>
     import { CurrencyInput } from 'vue-currency-input';
-
-
     import InputError from "../../components/InputError";
 
     export default {

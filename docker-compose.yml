@@ -50,6 +50,19 @@ services:
       - ./.docker/mysql/my.cnf:/etc/mysql/my.cnf
     networks:
       - app-network
+
+  postgres:
+    image: postgres:9.4
+    container_name: db-dmz
+    restart: always
+    tty: true
+    environment:
+      POSTGRES_PASSWORD: password
+    volumes:
+      - .docker/postgres:/var/lib/postgresql/data
+    networks:
+      - app-network
+
   adminer-dmz:
     container_name: adminer-dmz
     image: adminer

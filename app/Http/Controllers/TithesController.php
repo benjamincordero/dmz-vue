@@ -12,7 +12,9 @@ use Inertia\Inertia;
 
 class TithesController extends Controller
 {
-
+    public function __construct(){
+        $this->middleware('logs', ['except'=>['index', 'edit', 'create']]);
+    }
     public function index()
     {
         $tithes = Tithe::where('is_current', true)->get();
