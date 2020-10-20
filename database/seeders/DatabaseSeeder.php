@@ -3,21 +3,16 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
 
     public function run()
     {
+        $path = storage_path('database.sql');
 
-        \App\Models\User::factory(1)->create([
-            'name' => 'Benjamín Cordero',
-            'email' => 'admin@admin.com'
-        ]);
-
-        \App\Models\User::factory(5)->create();
-        \App\Models\Type::factory()->create();
-        \App\Models\Tithe::factory(2)->create();
-        \App\Models\Offering::factory(5)->create();
+        $sql = file_get_contents($path);
+        DB::unprepared($sql);
     }
 }
