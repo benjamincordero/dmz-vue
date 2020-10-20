@@ -251,10 +251,10 @@ export default {
   },
   computed: {
     total: function () {
-      return this.tithes.reduce((i, current) => i + current.amount, 0);
+      return this.tithes.reduce((i, current) => parseFloat(i) + parseFloat(current.amount), 0);
     },
     total_tithe: function () {
-      return this.tithes.reduce((i, current) => i + current.tithe, 0);
+      return this.tithes.reduce((i, current) => parseFloat(i) + parseFloat(current.tithe), 0);
     },
   },
 };

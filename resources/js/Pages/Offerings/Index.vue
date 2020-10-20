@@ -252,7 +252,7 @@ export default {
   },
   computed: {
     total: function () {
-      return this.offerings.reduce((i, current) => i + current.amount, 0);
+      return this.offerings.reduce((i, current) => parseFloat(i) + parseFloat(current.amount), 0);
     },
   },
 };
