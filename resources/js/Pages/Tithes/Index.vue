@@ -241,7 +241,7 @@ export default {
         }, 250)
     },
     async complete() {
-        await this.$inertia.post(route("diezmos.complete", this.form));
+        await this.$inertia.post(route("diezmos.complete"), this.form);
 
         if (parseFloat(this.form.rate) > 0) {
             this.confirmingComplete = false;
