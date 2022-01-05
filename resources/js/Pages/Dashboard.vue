@@ -1,51 +1,51 @@
 <template>
   <app-layout>
     <template #header>
-      <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+      <h2 class="text-xl font-semibold leading-tight text-gray-800">
         Dashboard
       </h2>
     </template>
 
     <div class="py-2">
-      <div class="max-w-7xl mx-auto sm:px-4 lg:px-2">
+      <div class="mx-auto max-w-7xl sm:px-4 lg:px-2">
         <div class="overflow-hidden">
           <div
-            class="flex items-center space-y-2 space-x-1 justify-around text-center"
+            class="text-center grid grid-flow-rows md:grid-cols-3 gap-4"
           >
             <inertia-link
               :href="$route('ofrendas.index')"
-              class="w-full bg-white rounded-md p-4 lg:w-1/3"
+              class="w-full p-4 bg-white rounded-md"
             >
               <img
                 src="assets/images/logos/ofrendas.svg"
                 alt="diezmos"
-                class="mx-auto w-40"
+                class="w-40 mx-auto"
               />
-              <h1 class="text-xl mt-4 font-bold text-blue-500">Ofrendas</h1>
+              <h1 class="mt-4 text-xl font-bold text-blue-500">Ofrendas</h1>
             </inertia-link>
             <inertia-link
               :href="$route('transferencias.index')"
-              class="w-full bg-white rounded-md p-4 lg:w-1/3"
+              class="w-full p-4 bg-white rounded-md"
             >
               <img
                 src="assets/images/logos/transferencias.svg"
                 alt="diezmos"
-                class="mx-auto w-40"
+                class="w-40 mx-auto"
               />
-              <h1 class="text-xl mt-4 font-bold text-blue-500">
+              <h1 class="mt-4 text-xl font-bold text-blue-500">
                 Transferencias
               </h1>
             </inertia-link>
            <inertia-link
               :href="$route('diezmos.index')"
-              class="w-full bg-white rounded-md p-4 lg:w-1/3"
+              class="w-full p-4 bg-white rounded-md"
             >
               <img
                 src="assets/images/logos/diezmos.svg"
                 alt="diezmos"
-                class="mx-auto w-40"
+                class="w-40 mx-auto"
               />
-              <h1 class="text-xl mt-4 font-bold text-blue-500">Diezmos</h1>
+              <h1 class="mt-4 text-xl font-bold text-blue-500">Diezmos</h1>
             </inertia-link>
           </div>
         </div>
